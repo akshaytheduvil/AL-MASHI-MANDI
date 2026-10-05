@@ -1,0 +1,2842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Al Mashi Mandi — Authentic Kuzhi Mandi</title>
+  <meta name="description" content="Authentic Kuzhi Mandi, slow-cooked to perfection in traditional underground pits. Dine in, takeaway, and delivery at Al Mashi Mandi, Ponnani, Kerala." />
+
+  <!-- Google Fonts CDN: Cormorant Garamond & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =====================================================================
+       🎨 3. DESIGN SYSTEM & CSS CUSTOM PROPERTIES
+       ===================================================================== */
+    :root {
+      --green-950: #03160F;   /* deepest background */
+      --green-900: #062B1F;   /* Story section bg — CRITICAL, keep exact */
+      --green-800: #0B3D2E;   /* primary dark green */
+      --green-700: #0F4A38;   /* accent green */
+      --gold: #C9A227;        /* primary gold accent */
+      --gold-light: #E4C55A;  /* gold highlight */
+      --gold-deep: #A8841A;   /* gold shadow */
+      --cream: #F7F2E7;       /* light text on dark */
+      --sand: #EDE4D1;        /* light card base */
+      --text: #EDE4D1;        /* default body text */
+      --text-dim: #A8B5AE;    /* muted text */
+      --red: #C42E2E;         /* discount badges */
+      --ink: #0A0A0A;         /* product card text */
+      --radius: 12px;
+      --max: 1280px;
+
+      --font-heading: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+      --transition-smooth: 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    /* CSS Reset & Defaults */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: linear-gradient(180deg, #03160F 0%, #0B1F18 40%, #03160F 100%);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Accessibility Focus Style */
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    /* Section Headings Common Styling */
+    .section-head {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 50px;
+    }
+
+    .section-eyebrow {
+      display: block;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 5vw, 50px);
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.15;
+    }
+
+    .section-sub {
+      color: var(--text-dim);
+      font-size: 15px;
+      font-weight: 300;
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    /* Gold Ornamental Divider (horizontal line + 2 rotated squares at ends) */
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 160px;
+      margin: 16px auto 18px;
+    }
+
+    .gold-divider.left-aligned {
+      justify-content: flex-start;
+      margin: 16px 0 22px;
+    }
+
+    .gold-divider .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(201,162,39,0.2), var(--gold), rgba(201,162,39,0.2));
+    }
+
+    .gold-divider .divider-sq {
+      width: 6px;
+      height: 6px;
+      background-color: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      box-shadow: 0 0 6px rgba(228,197,90,0.5);
+    }
+
+    /* =====================================================================
+       5.1 FIXED HEADER (Glass Morphism)
+       ===================================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(6, 43, 31, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .site-header.scrolled {
+      background: rgba(6, 43, 31, 0.98);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.35);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 24px;
+    }
+
+    /* Brand Logo / Wordmark */
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, var(--green-800), var(--green-950));
+      box-shadow: 0 0 12px rgba(201, 162, 39, 0.3);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    /* Logo Image with Graceful Monogram Fallback */
+    .brand-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-monogram {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      text-shadow: 0 0 8px rgba(228, 197, 90, 0.4);
+    }
+
+    .brand-wordmark {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .brand-line1 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 3px;
+      line-height: 1;
+    }
+
+    .brand-line2 {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 6px;
+      margin-top: 3px;
+      line-height: 1;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-link {
+      position: relative;
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--cream);
+      padding: 6px 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--gold);
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+      width: 100%;
+    }
+
+    /* Header Right CTA */
+    .header-cta-btn {
+      padding: 10px 22px;
+      border: 1px solid var(--gold);
+      border-radius: 6px;
+      color: var(--gold);
+      background: transparent;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .header-cta-btn:hover,
+    .header-cta-btn:focus-visible {
+      background: var(--gold);
+      color: var(--green-950);
+      box-shadow: 0 0 16px rgba(201, 162, 39, 0.4);
+    }
+
+    /* Mobile Hamburger */
+    .hamburger-btn {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 32px;
+      height: 22px;
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      z-index: 110;
+    }
+
+    .hamburger-line {
+      width: 26px;
+      height: 2px;
+      background-color: var(--gold);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .hamburger-btn.active .hamburger-line:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+
+    .hamburger-btn.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-btn.active .hamburger-line:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+
+    /* =====================================================================
+       5.2 HERO SECTION — Spinning + Swiping Mandi PNGs
+       ===================================================================== */
+    .hero-section {
+      min-height: 100vh;
+      min-height: 100dvh;
+      position: relative;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 130px 24px 80px;
+      background:
+        radial-gradient(circle at 50% 40%, rgba(15, 74, 56, 0.55), transparent 65%),
+        linear-gradient(180deg, #041F16 0%, #062B1F 60%, #041F16 100%);
+    }
+
+    /* Atmosphere Glow Themes */
+    .hero-section.theme-saffron .glow.gold {
+      background: radial-gradient(circle, rgba(230, 126, 34, 0.25) 0%, rgba(230, 126, 34, 0) 70%);
+    }
+    .hero-section.theme-saffron .glow.warm {
+      background: radial-gradient(circle, rgba(211, 84, 0, 0.22) 0%, rgba(211, 84, 0, 0) 70%);
+    }
+
+    .hero-section.theme-emerald .glow.gold {
+      background: radial-gradient(circle, rgba(46, 204, 113, 0.2) 0%, rgba(46, 204, 113, 0) 70%);
+    }
+    .hero-section.theme-emerald .glow.warm {
+      background: radial-gradient(circle, rgba(15, 74, 56, 0.3) 0%, rgba(15, 74, 56, 0) 70%);
+    }
+
+    .hero-section.theme-night .glow.gold {
+      background: radial-gradient(circle, rgba(142, 68, 173, 0.2) 0%, rgba(142, 68, 173, 0) 70%);
+    }
+    .hero-section.theme-night .glow.warm {
+      background: radial-gradient(circle, rgba(41, 128, 185, 0.2) 0%, rgba(41, 128, 185, 0) 70%);
+    }
+
+    /* Glow divs (Layer 1) */
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      will-change: opacity, transform;
+    }
+
+    .glow.gold {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201, 162, 39, 0.18) 0%, rgba(201, 162, 39, 0) 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulseGold 4s ease-in-out infinite alternate;
+    }
+
+    .glow.warm {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(196, 46, 46, 0.12) 0%, rgba(196, 46, 46, 0) 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulseWarm 6s ease-in-out infinite alternate;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes pulseGold {
+      0% { opacity: 0.10; transform: translate(-50%, -50%) scale(0.96); }
+      100% { opacity: 0.25; transform: translate(-50%, -50%) scale(1.05); }
+    }
+
+    @keyframes pulseWarm {
+      0% { opacity: 0.08; transform: translate(-50%, -50%) scale(0.94); }
+      100% { opacity: 0.20; transform: translate(-50%, -50%) scale(1.06); }
+    }
+
+    .mandi-spin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(340px, 55vw, 620px);
+      height: clamp(340px, 55vw, 620px);
+      object-fit: contain;
+      opacity: 0.92;
+      filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 50px rgba(201, 162, 39, 0.35));
+      animation: spinSlow 60s linear infinite;
+      z-index: 2;
+      will-change: transform;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    @keyframes spinSlow {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Fallback Platter Artwork if mandi-platter.png is not loaded */
+    .mandi-platter-placeholder {
+      display: none; /* Shown via onerror script */
+      border-radius: 50%;
+      background: radial-gradient(circle at 45% 45%, #B8860B 0%, #5E4600 55%, #1F1500 100%);
+      border: 8px solid #C9A227;
+      box-shadow: inset 0 0 40px rgba(0,0,0,0.8), 0 0 35px rgba(201,162,39,0.3);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      overflow: hidden;
+    }
+
+    .platter-outer-ring {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed rgba(228, 197, 90, 0.4);
+    }
+
+    .platter-inner-rim {
+      width: 82%;
+      height: 82%;
+      border-radius: 50%;
+      background: radial-gradient(circle, #D4AF37 0%, #A67C1E 70%, #4A3305 100%);
+      border: 4px solid #F7F2E7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .platter-rice-bed {
+      width: 80%;
+      height: 80%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #F4D03F 10%, #D4AC0D 40%, #7D6608 90%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: inset 0 0 25px rgba(0,0,0,0.5);
+    }
+
+    .mandi-meat-roast {
+      width: 50%;
+      height: 50%;
+      border-radius: 40% 60% 60% 40% / 50% 50% 50% 50%;
+      background: radial-gradient(circle at 30% 30%, #922B21 0%, #641E16 70%, #2C0B08 100%);
+      border: 2px solid #C0392B;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+    }
+
+    .platter-center-tag {
+      position: absolute;
+      bottom: 22%;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #FFF;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+      background: rgba(3, 22, 15, 0.85);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--gold);
+    }
+
+    /* Left & Right Swiping PNGs */
+    .mandi-swipe {
+      position: absolute;
+      top: 50%;
+      width: clamp(180px, 24vw, 320px);
+      height: clamp(180px, 24vw, 320px);
+      object-fit: contain;
+      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+      z-index: 2;
+      pointer-events: none;
+      user-select: none;
+      will-change: transform, opacity;
+    }
+
+    .mandi-swipe-left {
+      left: 0;
+      animation: swipeInLeft 8s ease-in-out infinite;
+    }
+
+    @keyframes swipeInLeft {
+      0%   { transform: translate(-120%, -50%) rotate(-15deg); opacity: 0; }
+      15%  { transform: translate(-10%,  -50%) rotate(-6deg);  opacity: 1; }
+      50%  { transform: translate(0,     -50%) rotate(0deg);   opacity: 1; }
+      85%  { transform: translate(-10%,  -50%) rotate(-6deg);  opacity: 1; }
+      100% { transform: translate(-120%, -50%) rotate(-15deg); opacity: 0; }
+    }
+
+    .mandi-swipe-right {
+      right: 0;
+      animation: swipeInRight 8s ease-in-out infinite;
+      animation-delay: 4s;
+    }
+
+    @keyframes swipeInRight {
+      0%   { transform: translate(120%, -50%) rotate(15deg); opacity: 0; }
+      15%  { transform: translate(10%,  -50%) rotate(6deg);  opacity: 1; }
+      50%  { transform: translate(0,    -50%) rotate(0deg);  opacity: 1; }
+      85%  { transform: translate(10%,  -50%) rotate(6deg);  opacity: 1; }
+      100% { transform: translate(120%, -50%) rotate(15deg); opacity: 0; }
+    }
+
+    /* Fallback Shapes for Left & Right Swipes if PNGs are not loaded */
+    .pot-placeholder, .thali-placeholder {
+      display: none; /* Shown via onerror script */
+      border-radius: 50%;
+      border: 4px solid var(--gold);
+      background: radial-gradient(circle, #5D4037, #1B0E09);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--gold-light);
+      font-family: var(--font-heading);
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    .pot-placeholder .pot-icon, .thali-placeholder .thali-icon {
+      font-size: 38px;
+      margin-bottom: 6px;
+    }
+
+    /* Steam SVG (Layer 3) */
+    .steam-svg {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 180px;
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+
+    .steam-path {
+      stroke: var(--gold);
+      stroke-width: 2.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-dasharray: 160;
+      stroke-dashoffset: 160;
+      animation: steamRise 4s ease-out infinite;
+    }
+
+    .steam-path:nth-child(2) {
+      animation-delay: 1.3s;
+    }
+
+    .steam-path:nth-child(3) {
+      animation-delay: 2.6s;
+    }
+
+    @keyframes steamRise {
+      0% {
+        stroke-dashoffset: 160;
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      30% {
+        opacity: 0.8;
+      }
+      80% {
+        opacity: 0.4;
+      }
+      100% {
+        stroke-dashoffset: 0;
+        opacity: 0;
+        transform: translateY(-25px);
+      }
+    }
+
+    /* Hero Text Content (Layer 4) */
+    .hero-content {
+      position: relative;
+      z-index: 4;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(42px, 7vw, 84px);
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.08;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+      margin-bottom: 8px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 500;
+      padding-right: 4px;
+    }
+
+    .hero-desc {
+      max-width: 600px;
+      margin: 18px auto 36px;
+      color: var(--sand);
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.7;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--green-950);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 14px 32px;
+      border-radius: 6px;
+      border: 1px solid var(--gold);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-gold:hover,
+    .btn-gold:focus-visible {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+      box-shadow: 0 0 24px rgba(228, 197, 90, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-cream {
+      background: transparent;
+      color: var(--cream);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 14px 32px;
+      border-radius: 6px;
+      border: 1px solid rgba(247, 242, 231, 0.4);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-outline-cream:hover,
+    .btn-outline-cream:focus-visible {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201, 162, 39, 0.08);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Dot Indicators (Layer 5) */
+    .hero-dots {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .hero-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.5px solid var(--gold);
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .hero-dot.active {
+      background: var(--gold);
+      box-shadow: 0 0 8px var(--gold-light);
+      transform: scale(1.2);
+    }
+
+    /* =====================================================================
+       5.3 STORY SECTION (CRITICAL — V1 GREEN #062B1F)
+       ===================================================================== */
+    .story-section {
+      background: var(--green-900); /* SOLID --green-900 #062B1F — NON-NEGOTIABLE */
+      padding: 110px 0;
+      position: relative;
+      overflow: hidden;
+      color: var(--cream);
+    }
+
+    /* Two decorative circles */
+    .story-decor-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      pointer-events: none;
+    }
+
+    .story-circle-tr {
+      width: 400px;
+      height: 400px;
+      top: -100px;
+      right: -100px;
+      opacity: 0.15;
+    }
+
+    .story-circle-bl {
+      width: 500px;
+      height: 500px;
+      bottom: -150px;
+      left: -150px;
+      opacity: 0.10;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .story-card {
+      padding: 38px 30px;
+      border: 1px solid rgba(201, 162, 39, 0.25);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.02);
+      transition: all var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .story-card:hover {
+      border-color: var(--gold);
+      background: rgba(201, 162, 39, 0.05);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .story-num {
+      font-family: var(--font-heading);
+      font-size: 46px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .story-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .story-text {
+      font-size: 14.5px;
+      font-weight: 300;
+      color: rgba(247, 242, 231, 0.68);
+      line-height: 1.65;
+    }
+
+    /* =====================================================================
+       5.4 ABOUT SECTION
+       ===================================================================== */
+    .about-section {
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(15, 74, 56, 0.45), transparent 60%),
+        linear-gradient(180deg, #03160F, #071F16);
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-visual {
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 40% 30%, rgba(201, 162, 39, 0.4), transparent 60%),
+        radial-gradient(circle at 70% 80%, rgba(196, 46, 46, 0.28), transparent 55%),
+        linear-gradient(135deg, #0F4A38, #03160F);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(201, 162, 39, 0.2);
+    }
+
+    .about-visual-border {
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      border-radius: 8px;
+      pointer-events: none;
+    }
+
+    .about-visual-badge {
+      text-align: center;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    .about-visual-title {
+      font-family: var(--font-heading);
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 6px;
+      line-height: 1.15;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+    }
+
+    .about-visual-year {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 8px;
+      margin-top: 14px;
+      text-transform: uppercase;
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .about-paragraph {
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      border-top: 1px solid rgba(201, 162, 39, 0.18);
+      padding-top: 28px;
+      margin-top: 24px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+    }
+
+    /* =====================================================================
+       5.5 MENU — Amazon-Style Product Grid
+       ===================================================================== */
+    .menu-section {
+      background: linear-gradient(180deg, #03160F, #0A2018);
+      padding: 110px 0;
+      position: relative;
+    }
+
+    /* Filter Bar */
+    .menu-filters {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 50px;
+    }
+
+    .filter-btn {
+      padding: 10px 22px;
+      border-radius: 30px;
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      background: transparent;
+      color: var(--text-dim);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .filter-btn.active {
+      background: var(--gold);
+      color: var(--green-950);
+      border-color: var(--gold);
+      box-shadow: 0 0 16px rgba(201, 162, 39, 0.3);
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    /* Product Card — Amazon Style: LIGHT on DARK */
+    .product-card {
+      background: linear-gradient(180deg, #FFFFFF, #F7F3EA);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      color: #1A1A1A;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+      transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 44px -14px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Image Area */
+    .product-image-area {
+      aspect-ratio: 1 / 1;
+      position: relative;
+      background: linear-gradient(135deg, #0F4A38, #03160F);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+      overflow: hidden;
+    }
+
+    .product-image-glow {
+      position: absolute;
+      width: 65%;
+      height: 65%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 162, 39, 0.3) 0%, transparent 70%);
+      filter: blur(2px);
+      pointer-events: none;
+    }
+
+    .product-dish-plate {
+      width: 68%;
+      height: 68%;
+      border-radius: 50%;
+      border: 2px dashed rgba(201, 162, 39, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: radial-gradient(circle, rgba(11, 61, 46, 0.8), rgba(3, 22, 15, 0.95));
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+
+    .product-dish-name {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 2px;
+      line-height: 1.15;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      position: relative;
+      z-index: 2;
+      padding: 0 8px;
+    }
+
+    .product-dish-sub {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-top: 6px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Badges */
+    .badge-pill {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 3;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #FFF;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .badge-pill.red {
+      background-color: var(--red);
+    }
+
+    .badge-pill.gold {
+      background-color: var(--gold);
+      color: var(--green-950);
+    }
+
+    /* Wishlist Button */
+    .btn-wishlist {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #666;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: color 0.25s ease, transform 0.25s ease;
+      z-index: 3;
+    }
+
+    .btn-wishlist:hover {
+      color: var(--gold);
+      transform: scale(1.1);
+    }
+
+    .btn-wishlist.active {
+      color: var(--red);
+    }
+
+    /* Product Body */
+    .product-body {
+      padding: 14px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-grow: 1;
+    }
+
+    .product-title {
+      font-size: 14.5px;
+      font-weight: 500;
+      color: #111111;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 39px;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .rating-stars {
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    .rating-count {
+      color: #777;
+    }
+
+    .product-desc {
+      font-size: 12.5px;
+      font-weight: 300;
+      color: #666;
+      line-height: 1.45;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 36px;
+    }
+
+    .product-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .price-now {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: #111111;
+    }
+
+    .price-mrp {
+      font-size: 13px;
+      color: #888888;
+      text-decoration: line-through;
+    }
+
+    .price-off {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    .product-bought-stat {
+      font-size: 11.5px;
+      color: #777;
+      margin-bottom: 4px;
+    }
+
+    .btn-add-order {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--gold);
+      color: var(--green-950);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border: none;
+      transition: all 0.3s ease;
+      margin-top: auto;
+    }
+
+    .btn-add-order:hover {
+      background: var(--gold-light);
+    }
+
+    .btn-add-order.added {
+      background: var(--green-900) !important;
+      color: var(--gold) !important;
+    }
+
+    /* Menu Full Ordering CTA */
+    .menu-cta-container {
+      text-align: center;
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-full-menu-order {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 42px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--green-950);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      box-shadow: 0 10px 30px rgba(201, 162, 39, 0.4);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-full-menu-order:hover,
+    .btn-full-menu-order:focus-visible {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(201, 162, 39, 0.6);
+      background: linear-gradient(135deg, #FFFFFF, var(--gold-light));
+      color: var(--green-950);
+    }
+
+    .btn-full-menu-order .btn-icon {
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-full-menu-order:hover .btn-icon {
+      transform: translateX(4px);
+    }
+
+    .menu-cta-note {
+      font-size: 13.5px;
+      color: var(--text-dim);
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+
+    /* =====================================================================
+       5.6 TEAM SECTION
+       ===================================================================== */
+    .team-section {
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(15, 74, 56, 0.45), transparent 60%),
+        linear-gradient(180deg, #03160F, #071F16);
+      padding: 110px 0;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 26px;
+    }
+
+    .team-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+      border: 1px solid rgba(201, 162, 39, 0.2);
+      border-radius: var(--radius);
+      padding: 32px 22px;
+      text-align: center;
+      transition: all var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .team-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-6px);
+      background: rgba(201, 162, 39, 0.04);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .team-photo-wrap {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      padding: 4px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .team-photo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--green-700), var(--green-950));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-initials {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--gold);
+      text-shadow: 0 0 12px rgba(201, 162, 39, 0.5);
+    }
+
+    .team-name {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .team-bio {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* =====================================================================
+       5.7 TESTIMONIALS — Auto-Scroll Carousel
+       ===================================================================== */
+    .testimonials-section {
+      background: linear-gradient(180deg, #03160F, #0A2018);
+      padding: 110px 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-wrapper {
+      width: 100%;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      padding: 10px 0;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 24px;
+      width: max-content;
+      animation: scrollX 40s linear infinite;
+    }
+
+    .carousel-wrapper:hover .carousel-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes scrollX {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .review-card {
+      width: 360px;
+      flex-shrink: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+      border: 1px solid rgba(201, 162, 39, 0.22);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.3s ease;
+    }
+
+    .review-card:hover {
+      border-color: var(--gold);
+    }
+
+    .review-quote-mark {
+      font-family: var(--font-heading);
+      font-size: 44px;
+      color: var(--gold);
+      opacity: 0.6;
+      line-height: 0.6;
+      margin-bottom: 12px;
+    }
+
+    .review-stars {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .review-text {
+      font-size: 14.5px;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .review-divider {
+      height: 1px;
+      background: rgba(201, 162, 39, 0.15);
+      margin-bottom: 16px;
+    }
+
+    .review-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: radial-gradient(circle, var(--green-800), var(--green-950));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .review-meta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .review-name {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--cream);
+    }
+
+    .review-city {
+      font-size: 11.5px;
+      color: var(--text-dim);
+    }
+
+    /* =====================================================================
+       5.8 VISIT SECTION
+       ===================================================================== */
+    .visit-section {
+      background:
+        radial-gradient(ellipse at 30% 80%, rgba(15, 74, 56, 0.5), transparent 60%),
+        linear-gradient(180deg, #03160F, #071F16);
+      padding: 110px 0;
+    }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 26px;
+    }
+
+    .visit-card {
+      text-align: center;
+      padding: 40px 24px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(201, 162, 39, 0.22);
+      background: rgba(255, 255, 255, 0.025);
+      transition: all var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .visit-card:hover {
+      border-color: var(--gold);
+      background: rgba(201, 162, 39, 0.04);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .visit-icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: radial-gradient(circle, var(--green-800), var(--green-950));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 12px rgba(201, 162, 39, 0.25);
+    }
+
+    .visit-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .visit-body {
+      font-size: 14.5px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .visit-link {
+      color: var(--gold);
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 6px;
+      font-weight: 500;
+      transition: color 0.25s ease;
+    }
+
+    .visit-link:hover {
+      text-decoration: underline;
+      color: var(--gold-light);
+    }
+
+    /* Optional Google Maps container placeholder */
+    .maps-placeholder {
+      margin-top: 50px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(201, 162, 39, 0.25);
+      overflow: hidden;
+      background: rgba(3, 22, 15, 0.6);
+      padding: 24px;
+      text-align: center;
+    }
+
+    /* =====================================================================
+       5.9 CTA BANNER
+       ===================================================================== */
+    .cta-banner-section {
+      width: 100%;
+      padding: 90px 24px;
+      background: linear-gradient(135deg, #C9A227, #A8841A);
+      color: var(--green-950);
+      text-align: center;
+      position: relative;
+    }
+
+    .cta-banner-content {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .cta-banner-title {
+      font-family: var(--font-heading);
+      font-size: clamp(30px, 4.5vw, 48px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      color: #03160F;
+    }
+
+    .cta-banner-text {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      color: #0B2B1F;
+    }
+
+    .btn-cta-dark {
+      background: var(--green-950);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 14px 34px;
+      border-radius: 30px;
+      border: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-cta-dark:hover,
+    .btn-cta-dark:focus-visible {
+      background: #000000;
+      color: var(--gold-light);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      transform: translateY(-2px);
+    }
+
+    /* =====================================================================
+       5.10 FOOTER
+       ===================================================================== */
+    .site-footer {
+      background: #020F0A; /* Near-black */
+      padding: 70px 0 30px;
+      border-top: 1px solid rgba(201, 162, 39, 0.15);
+      position: relative;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 50px;
+      margin-bottom: 50px;
+    }
+
+    .footer-brand-title {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 4px;
+      line-height: 1;
+    }
+
+    .footer-brand-subtitle {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 6px;
+      margin-top: 4px;
+      margin-bottom: 18px;
+    }
+
+    .footer-brand-desc {
+      max-width: 320px;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .footer-col-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .footer-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-nav-link {
+      font-size: 14px;
+      color: var(--text-dim);
+      transition: color 0.25s ease;
+      display: inline-block;
+    }
+
+    .footer-nav-link:hover,
+    .footer-nav-link:focus-visible {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(201, 162, 39, 0.15);
+      padding-top: 24px;
+      text-align: center;
+      font-size: 12.5px;
+      letter-spacing: 1px;
+      color: rgba(237, 228, 209, 0.4);
+    }
+
+    /* =====================================================================
+       🎬 6. 3D SCROLL REVEAL & DIRECTIONAL TRANSITIONS
+       ===================================================================== */
+    .reveal-3d {
+      opacity: 0;
+      transform: perspective(1200px) rotateX(18deg) translateY(60px) scale(0.95);
+      transform-origin: center bottom;
+      transition: opacity 1s cubic-bezier(0.2, 0.7, 0.2, 1), transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-3d.visible {
+      opacity: 1;
+      transform: perspective(1200px) rotateX(0deg) translateY(0) scale(1);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: opacity 1s cubic-bezier(0.2, 0.7, 0.2, 1), transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 1s cubic-bezier(0.2, 0.7, 0.2, 1), transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* =====================================================================
+       📱 7. RESPONSIVE BREAKPOINTS
+       ===================================================================== */
+    @media (max-width: 960px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+      .about-visual {
+        max-width: 480px;
+        margin: 0 auto;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      /* Header & Mobile Menu */
+      .nav-links {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: rgba(6, 43, 31, 0.98);
+        border-bottom: 1px solid rgba(201, 162, 39, 0.25);
+        flex-direction: column;
+        padding: 24px 0;
+        gap: 18px;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.35s ease, opacity 0.35s ease;
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .header-cta-btn {
+        display: none;
+      }
+
+      .hamburger-btn {
+        display: flex;
+      }
+
+      /* Hero Mobile */
+      .hero-section {
+        padding: 110px 16px 70px;
+      }
+
+      .mandi-spin {
+        width: clamp(240px, 60vw, 340px);
+        height: clamp(240px, 60vw, 340px);
+      }
+
+      .mandi-swipe {
+        width: clamp(120px, 30vw, 180px);
+        height: clamp(120px, 30vw, 180px);
+        opacity: 0.55;
+      }
+
+      /* Sections padding */
+      .story-section,
+      .about-section,
+      .menu-section,
+      .team-section,
+      .testimonials-section,
+      .visit-section {
+        padding: 80px 0;
+      }
+
+      /* Product Grid: 2 columns on mobile */
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .product-body {
+        padding: 10px 12px 14px;
+      }
+
+      .product-title {
+        font-size: 13px;
+        min-height: 34px;
+      }
+
+      .price-now {
+        font-size: 17px;
+      }
+
+      .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-grid {
+        gap: 10px;
+      }
+
+      .review-card {
+        width: 280px;
+        padding: 20px;
+      }
+
+      .hero-eyebrow {
+        letter-spacing: 5px;
+      }
+    }
+
+    /* =====================================================================
+       ♿ 14. PREFERS-REDUCED-MOTION
+       ===================================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .mandi-spin,
+      .mandi-swipe,
+      .glow,
+      .carousel-track,
+      .reveal-3d,
+      .reveal-left,
+      .reveal-right,
+      .steam-path {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =====================================================================
+       5.1 HEADER (Fixed, Glass Morphism)
+       ===================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <!-- Left: Brand Block -->
+      <a href="#" class="brand-block" aria-label="Al Mashi Mandi Home">
+        <div class="brand-mark">
+          <!-- Logo image: user's al mashi mandi logo.jpg with graceful monogram fallback -->
+          <img src="al mashi mandi logo.jpg" alt="Al Mashi Mandi Logo" class="brand-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="brand-monogram">AM</div>
+        </div>
+        <div class="brand-wordmark">
+          <span class="brand-line1">AL MASHI</span>
+          <span class="brand-line2">MANDI</span>
+        </div>
+      </a>
+
+      <!-- Center: Nav links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#story" class="nav-link">Our Story</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#menu" class="nav-link">Menu</a></li>
+          <li><a href="#team" class="nav-link">Team</a></li>
+          <li><a href="#reviews" class="nav-link">Reviews</a></li>
+          <li><a href="#visit" class="nav-link">Visit</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right: CTA Button -->
+      <a href="order.html" class="header-cta-btn">Order Now</a>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       5.2 HERO SECTION — Spinning + Swiping Mandi PNGs
+       ===================================================================== -->
+  <section class="hero-section" id="hero">
+    <!-- Layer 1: Two Radial Glow Divs -->
+    <div class="glow gold" aria-hidden="true"></div>
+    <div class="glow warm" aria-hidden="true"></div>
+
+    <!-- Layer 2: Spinning Center Mandi PNG + 2 Swiping Side PNGs -->
+    <!-- Center Spin Platter (Main Mandi PNG) -->
+    <img class="mandi-spin" id="heroCenterImg" src="main mandi.png" srcset="main%20mandi.png 1x" alt="Slow-Cooked Kuzhi Mandi Platter" loading="eager" onerror="if(!this.dataset.retried){this.dataset.retried='true'; this.src='main%20mandi.png';} else {this.style.display='none'; document.getElementById('heroCenterPlaceholder').style.display='block';}" />
+    <div class="mandi-spin mandi-platter-placeholder" id="heroCenterPlaceholder" aria-hidden="true">
+      <div class="platter-outer-ring">
+        <div class="platter-inner-rim">
+          <div class="platter-rice-bed">
+            <div class="mandi-meat-roast"></div>
+          </div>
+        </div>
+      </div>
+      <div class="platter-center-tag">KUZHI MANDI</div>
+    </div>
+
+    <!-- Left Swipe Clay Pot -->
+    <!-- TODO: Replace with real mandi-pot-1.png (500x500 clay pot with steam) -->
+    <img class="mandi-swipe mandi-swipe-left" id="heroLeftImg" src="Golden_Whole_Chicken_Mandi_Platter-removebg-preview.png" alt="Clay Pot Kuzhi Mandi" loading="lazy" onerror="this.style.display='none'; document.getElementById('heroLeftPlaceholder').style.display='flex';" />
+    <div class="mandi-swipe mandi-swipe-left pot-placeholder" id="heroLeftPlaceholder" aria-hidden="true">
+      <span class="pot-icon">♨</span>
+      <span>UNDERGROUND<br>KUZHI POT</span>
+    </div>
+
+    <!-- Right Swipe Thali Platter -->
+    <!-- TODO: Replace with real mandi-thali-1.png (500x500 thali or grill platter) -->
+    <img class="mandi-swipe mandi-swipe-right" id="heroRightImg" src="mutton mandi.png" alt="Grill Thali Platter" loading="lazy" onerror="this.style.display='none'; document.getElementById('heroRightPlaceholder').style.display='flex';" />
+    <div class="mandi-swipe mandi-swipe-right thali-placeholder" id="heroRightPlaceholder" aria-hidden="true">
+      <span class="thali-icon">🍗</span>
+      <span>ARABIAN<br>GRILL THALI</span>
+    </div>
+
+    <!-- Layer 3: Steam SVG (Bottom Center) -->
+    <svg class="steam-svg" viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path class="steam-path" d="M120 170 C100 130, 140 90, 110 30" />
+      <path class="steam-path" d="M150 175 C170 125, 130 85, 160 20" />
+      <path class="steam-path" d="M180 170 C160 135, 195 95, 175 35" />
+    </svg>
+
+    <!-- Layer 4: Hero Text Content -->
+    <div class="hero-content">
+      <span class="hero-eyebrow">AUTHENTIC ARABIAN CUISINE</span>
+      <h1 class="hero-title">
+        Slow-Cooked <em>Kuzhi Mandi</em><br />Perfected by Tradition
+      </h1>
+
+      <div class="gold-divider" aria-hidden="true">
+        <span class="divider-sq"></span>
+        <span class="divider-line"></span>
+        <span class="divider-sq"></span>
+      </div>
+
+      <p class="hero-desc">
+        Buried in the earth, fired by wood, and slow-cooked for hours — Al Mashi Mandi brings you the true taste of Arabian hospitality, served with rice that carries the smoke of tradition.
+      </p>
+
+      <div class="hero-actions">
+        <a href="order.html" class="btn-gold">Order Online Now</a>
+        <a href="#menu" class="btn-outline-cream">Signature Dishes</a>
+      </div>
+    </div>
+
+    <!-- Layer 5: Hero Dot Indicators -->
+    <div class="hero-dots" role="tablist" aria-label="Hero Atmosphere Themes">
+      <button class="hero-dot active" aria-label="Theme 1: Amber Gold" data-theme="gold"></button>
+      <button class="hero-dot" aria-label="Theme 2: Saffron Ember" data-theme="saffron"></button>
+      <button class="hero-dot" aria-label="Theme 3: Emerald Herb" data-theme="emerald"></button>
+      <button class="hero-dot" aria-label="Theme 4: Arabian Night" data-theme="night"></button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       5.3 STORY SECTION (CRITICAL — V1 GREEN #062B1F)
+       ===================================================================== -->
+  <section class="story-section" id="story">
+    <!-- Two decorative circles (1px gold border, low opacity) -->
+    <div class="story-decor-circle story-circle-tr" aria-hidden="true"></div>
+    <div class="story-decor-circle story-circle-bl" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">OUR CRAFT</span>
+        <h2 class="section-title">The Art of Slow Cooking</h2>
+        <div class="gold-divider" aria-hidden="true">
+          <span class="divider-sq"></span>
+          <span class="divider-line"></span>
+          <span class="divider-sq"></span>
+        </div>
+        <p class="section-sub">
+          Every Al Mashi Mandi begins underground — where time, smoke, and patience create flavor you can't rush.
+        </p>
+      </div>
+
+      <div class="story-grid">
+        <!-- Card 01 -->
+        <article class="story-card reveal-3d">
+          <div class="story-num">01</div>
+          <h3 class="story-title">Traditional Kuzhi Method</h3>
+          <p class="story-text">
+            Our meat is cooked in an underground pit (kuzhi), sealed and slow-fired for hours until it falls off the bone.
+          </p>
+        </article>
+
+        <!-- Card 02 -->
+        <article class="story-card reveal-3d">
+          <div class="story-num">02</div>
+          <h3 class="story-title">Wood-Fired Flavor</h3>
+          <p class="story-text">
+            Natural wood embers infuse every grain of rice and every cut of meat with a deep, smoky aroma.
+          </p>
+        </article>
+
+        <!-- Card 03 -->
+        <article class="story-card reveal-3d">
+          <div class="story-num">03</div>
+          <h3 class="story-title">Served with Love</h3>
+          <p class="story-text">
+            From our family to your table — generous portions, warm hospitality, and the true spirit of Arabian dining.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       5.4 ABOUT SECTION
+       ===================================================================== -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <!-- Left Visual -->
+        <div class="about-visual reveal-left">
+          <div class="about-visual-border" aria-hidden="true"></div>
+          <div class="about-visual-badge">
+            <div class="about-visual-title">KUZHI<br />MANDI</div>
+            <span class="about-visual-year">Since 2016</span>
+          </div>
+        </div>
+
+        <!-- Right Content -->
+        <div class="about-content reveal-right">
+          <span class="section-eyebrow">ABOUT AL MASHI</span>
+          <h2 class="section-title" style="text-align: left;">Rooted in Tradition, Served with Pride</h2>
+          <div class="gold-divider left-aligned" aria-hidden="true">
+            <span class="divider-sq"></span>
+            <span class="divider-line"></span>
+            <span class="divider-sq"></span>
+          </div>
+
+          <p class="about-paragraph">
+            Al Mashi Mandi was born from a simple belief — that great Mandi cannot be rushed. We cook our meat in a traditional underground pit (kuzhi), sealed and fired by natural wood embers for hours until the flavor deepens and the meat falls off the bone.
+          </p>
+          <p class="about-paragraph">
+            Every plate we serve carries the aroma of smoke, the warmth of Arabian spices, and the hospitality of a family that treats every guest like their own.
+          </p>
+
+          <!-- Stats Row -->
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Years of Craft</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">50K+</span>
+              <span class="stat-label">Happy Guests</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Fresh Daily</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       5.5 MENU — Amazon-Style Product Grid
+       ===================================================================== -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">SIGNATURE SPECIALS</span>
+        <h2 class="section-title">Our Signature Dishes</h2>
+        <div class="gold-divider" aria-hidden="true">
+          <span class="divider-sq"></span>
+          <span class="divider-line"></span>
+          <span class="divider-sq"></span>
+        </div>
+        <p class="section-sub">Underground pit-cooked favorites, fired with natural wood embers. Available in Quarter, Half, 3/4 & Full portions.</p>
+      </div>
+
+      <!-- Product Grid (Signature Dishes) -->
+      <div class="product-grid" id="productGrid">
+        
+        <!-- 1. Chicken Mandi -->
+        <article class="product-card reveal-3d" data-cat="mandi">
+          <div class="product-image-area">
+            <span class="badge-pill gold">Signature</span>
+            <button class="btn-wishlist" aria-label="Add Chicken Mandi to wishlist">♡</button>
+            <div class="product-image-glow" aria-hidden="true"></div>
+            <!-- TODO: Replace with real dish image: <img src="main mandi.png" alt="Chicken Mandi" class="product-img"> -->
+            <div class="product-dish-plate">
+              <div class="product-dish-name">CHICKEN MANDI</div>
+            </div>
+            <span class="product-dish-sub">PIT SMOKED · FROM ₹200</span>
+          </div>
+          <div class="product-body">
+            <h3 class="product-title">Authentic Wood-Fired Chicken Kuzhi Mandi</h3>
+            <div class="product-rating">
+              <span class="rating-stars">★★★★★</span>
+              <span class="rating-count">4.8 (320)</span>
+            </div>
+            <p class="product-desc">Tender chicken slow-steamed over wood-fired basmati rice with whole spices. Choose Quarter, Half, 3/4 or Full.</p>
+            <div class="product-price-row">
+              <span class="price-now">₹200</span>
+              <span class="price-mrp">₹250</span>
+              <span class="price-off">From Qtr</span>
+            </div>
+            <div class="product-bought-stat">1K+ bought in past month</div>
+            <a href="order.html" class="btn-add-order" style="text-align:center; text-decoration:none; display:block;">Order Now →</a>
+          </div>
+        </article>
+
+        <!-- 2. Mutton Mandi -->
+        <article class="product-card reveal-3d" data-cat="mandi">
+          <div class="product-image-area">
+            <span class="badge-pill gold">Signature</span>
+            <button class="btn-wishlist" aria-label="Add Mutton Mandi to wishlist">♡</button>
+            <div class="product-image-glow" aria-hidden="true"></div>
+            <div class="product-dish-plate">
+              <div class="product-dish-name">MUTTON MANDI</div>
+            </div>
+            <span class="product-dish-sub">PIT ROASTED · FROM ₹350</span>
+          </div>
+          <div class="product-body">
+            <h3 class="product-title">Slow-Roasted Baby Mutton Kuzhi Mandi</h3>
+            <div class="product-rating">
+              <span class="rating-stars">★★★★★</span>
+              <span class="rating-count">4.9 (410)</span>
+            </div>
+            <p class="product-desc">Succulent underground pit-roasted baby mutton, melt-in-mouth tender. Choose Quarter, Half, 3/4 or Full.</p>
+            <div class="product-price-row">
+              <span class="price-now">₹350</span>
+              <span class="price-mrp">₹420</span>
+              <span class="price-off">From Qtr</span>
+            </div>
+            <div class="product-bought-stat">800+ bought in past month</div>
+            <a href="order.html" class="btn-add-order" style="text-align:center; text-decoration:none; display:block;">Order Now →</a>
+          </div>
+        </article>
+
+        <!-- 3. Beef Mandi -->
+        <article class="product-card reveal-3d" data-cat="mandi">
+          <div class="product-image-area">
+            <span class="badge-pill red">Bestseller</span>
+            <button class="btn-wishlist" aria-label="Add Beef Mandi to wishlist">♡</button>
+            <div class="product-image-glow" aria-hidden="true"></div>
+            <div class="product-dish-plate">
+              <div class="product-dish-name">BEEF MANDI</div>
+            </div>
+            <span class="product-dish-sub">SMOKY & SPICED · FROM ₹280</span>
+          </div>
+          <div class="product-body">
+            <h3 class="product-title">Traditional Slow-Braised Spiced Beef Mandi</h3>
+            <div class="product-rating">
+              <span class="rating-stars">★★★★★</span>
+              <span class="rating-count">4.6 (275)</span>
+            </div>
+            <p class="product-desc">Slow-braised spiced prime beef steeped in smoky aromatic long-grain rice. Choose Quarter, Half, 3/4 or Full.</p>
+            <div class="product-price-row">
+              <span class="price-now">₹280</span>
+              <span class="price-mrp">₹340</span>
+              <span class="price-off">From Qtr</span>
+            </div>
+            <div class="product-bought-stat">600+ bought in past month</div>
+            <a href="order.html" class="btn-add-order" style="text-align:center; text-decoration:none; display:block;">Order Now →</a>
+          </div>
+        </article>
+
+        <!-- 4. Family Feast -->
+        <article class="product-card reveal-3d" data-cat="mandi">
+          <div class="product-image-area">
+            <span class="badge-pill gold">Grand Combo</span>
+            <button class="btn-wishlist" aria-label="Add Family Feast to wishlist">♡</button>
+            <div class="product-image-glow" aria-hidden="true"></div>
+            <div class="product-dish-plate">
+              <div class="product-dish-name">FAMILY FEAST</div>
+            </div>
+            <span class="product-dish-sub">SERVES 4-5 · SPECIAL</span>
+          </div>
+          <div class="product-body">
+            <h3 class="product-title">Grand Family Platter (Chicken + Mutton)</h3>
+            <div class="product-rating">
+              <span class="rating-stars">★★★★★</span>
+              <span class="rating-count">4.9 (140)</span>
+            </div>
+            <p class="product-desc">Platter for 4-5: Full Chicken & Mutton Mandi, garlic dip, salads, cold drinks & extra rice.</p>
+            <div class="product-price-row">
+              <span class="price-now">₹1,899</span>
+              <span class="price-mrp">₹2,499</span>
+              <span class="price-off">-24%</span>
+            </div>
+            <div class="product-bought-stat">150+ bought in past month</div>
+            <a href="order.html" class="btn-add-order" style="text-align:center; text-decoration:none; display:block;">Order Now →</a>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Menu CTA Button Redirecting to order.html -->
+      <div class="menu-cta-container">
+        <a href="order.html" class="btn-full-menu-order">
+          <span>Order Now — View Full Menu</span>
+          <span class="btn-icon">→</span>
+        </a>
+        <p class="menu-cta-note">
+          ✨ Custom Mandi Portions (Quarter, Half, 3/4, Full) · Cold Soft Drinks (Pepsi, Coca-Cola, 7 Up) · Easy WhatsApp Checkout
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       5.6 TEAM SECTION
+       ===================================================================== -->
+  <section class="team-section" id="team">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">THE PEOPLE BEHIND</span>
+        <h2 class="section-title">Meet Our Team</h2>
+        <div class="gold-divider" aria-hidden="true">
+          <span class="divider-sq"></span>
+          <span class="divider-line"></span>
+          <span class="divider-sq"></span>
+        </div>
+        <p class="section-sub">The hands that fire the pit and the hearts that serve your plate.</p>
+      </div>
+
+      <div class="team-grid">
+        <!-- 1. Abdul Majeed -->
+        <article class="team-card reveal-3d">
+          <div class="team-photo-wrap">
+            <div class="team-photo-inner">
+              <!-- TODO: Replace with real photo: <img src="abdul-majeed.jpg" alt="Abdul Majeed" class="team-photo"> -->
+              <span class="team-initials">AM</span>
+            </div>
+          </div>
+          <h3 class="team-name">Abdul Majeed</h3>
+          <span class="team-role">Founder & Head Chef</span>
+          <p class="team-bio">Three decades of Mandi mastery — the keeper of our kuzhi recipe.</p>
+        </article>
+
+        <!-- 2. Sara Rahman -->
+        <article class="team-card reveal-3d">
+          <div class="team-photo-wrap">
+            <div class="team-photo-inner">
+              <!-- TODO: Replace with real photo: <img src="sara-rahman.jpg" alt="Sara Rahman" class="team-photo"> -->
+              <span class="team-initials">SR</span>
+            </div>
+          </div>
+          <h3 class="team-name">Sara Rahman</h3>
+          <span class="team-role">Operations Manager</span>
+          <p class="team-bio">Ensures every guest leaves with a smile and a full heart.</p>
+        </article>
+
+        <!-- 3. Mohammed Kasim -->
+        <article class="team-card reveal-3d">
+          <div class="team-photo-wrap">
+            <div class="team-photo-inner">
+              <!-- TODO: Replace with real photo: <img src="mohammed-kasim.jpg" alt="Mohammed Kasim" class="team-photo"> -->
+              <span class="team-initials">MK</span>
+            </div>
+          </div>
+          <h3 class="team-name">Mohammed Kasim</h3>
+          <span class="team-role">Master of the Pit</span>
+          <p class="team-bio">The man who fires the wood and seals the pit every morning.</p>
+        </article>
+
+        <!-- 4. Fatima Khadeeja -->
+        <article class="team-card reveal-3d">
+          <div class="team-photo-wrap">
+            <div class="team-photo-inner">
+              <!-- TODO: Replace with real photo: <img src="fatima-khadeeja.jpg" alt="Fatima Khadeeja" class="team-photo"> -->
+              <span class="team-initials">FK</span>
+            </div>
+          </div>
+          <h3 class="team-name">Fatima Khadeeja</h3>
+          <span class="team-role">Spice Curator</span>
+          <p class="team-bio">Crafts our signature Arabian spice blends, grounded fresh daily.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       5.7 TESTIMONIALS — Auto-Scroll Carousel
+       ===================================================================== -->
+  <section class="testimonials-section" id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">WHAT GUESTS SAY</span>
+        <h2 class="section-title">Loved by Our Guests</h2>
+        <div class="gold-divider" aria-hidden="true">
+          <span class="divider-sq"></span>
+          <span class="divider-line"></span>
+          <span class="divider-sq"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Infinite Carousel Track (Duplicates 4 reviews for seamless loop) -->
+    <div class="carousel-wrapper" aria-label="Customer Reviews Carousel">
+      <div class="carousel-track">
+        
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div>
+            <div class="review-quote-mark" aria-hidden="true">“</div>
+            <div class="review-stars" aria-label="5 stars">★★★★★</div>
+            <p class="review-text">
+              "The kuzhi-cooked mutton mandi is unreal — smoke, spice, and tenderness in every bite. Best mandi I've had in Kerala."
+            </p>
+          </div>
+          <div>
+            <div class="review-divider"></div>
+            <div class="review-user">
+              <div class="review-avatar">R</div>
+              <div class="review-meta">
+                <span class="review-name">Rahul Nair</span>
+                <span class="review-city">Kochi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div>
+            <div class="review-quote-mark" aria-hidden="true">“</div>
+            <div class="review-stars" aria-label="5 stars">★★★★★</div>
+            <p class="review-text">
+              "We ordered the family feast for four — generous portions, aromatic rice, and the service was warm from start to finish."
+            </p>
+          </div>
+          <div>
+            <div class="review-divider"></div>
+            <div class="review-user">
+              <div class="review-avatar">F</div>
+              <div class="review-meta">
+                <span class="review-name">Fathima Beevi</span>
+                <span class="review-city">Malappuram</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div>
+            <div class="review-quote-mark" aria-hidden="true">“</div>
+            <div class="review-stars" aria-label="5 stars">★★★★★</div>
+            <p class="review-text">
+              "Authentic Arabian vibes. The Al Faham with garlic sauce is my go-to order every single weekend. Highly recommended."
+            </p>
+          </div>
+          <div>
+            <div class="review-divider"></div>
+            <div class="review-user">
+              <div class="review-avatar">A</div>
+              <div class="review-meta">
+                <span class="review-name">Arjun Menon</span>
+                <span class="review-city">Thrissur</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-card">
+          <div>
+            <div class="review-quote-mark" aria-hidden="true">“</div>
+            <div class="review-stars" aria-label="4 stars">★★★★☆</div>
+            <p class="review-text">
+              "Beautiful ambiance, generous plates, and real wood-fired taste. You can tell the difference from the very first bite."
+            </p>
+          </div>
+          <div>
+            <div class="review-divider"></div>
+            <div class="review-user">
+              <div class="review-avatar">S</div>
+              <div class="review-meta">
+                <span class="review-name">Sana Yusuf</span>
+                <span class="review-city">Calicut</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Seamless Duplicates -->
+        <!-- Duplicate 1 -->
+        <div class="review-card" aria-hidden="true">
+          <div>
+            <div class="review-quote-mark">“</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              "The kuzhi-cooked mutton mandi is unreal — smoke, spice, and tenderness in every bite. Best mandi I've had in Kerala."
+            </p>
+          </div>
+          <div>
+            <div class="review-divider"></div>
+            <div class="review-user">
+              <div class="review-avatar">R</div>
+              <div class="review-meta">
+                <span class="review-name">Rahul Nair</span>
+                <span class="review-city">Kochi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duplicate 2 -->
+        <div class="review-card" aria-hidden="true">
+          <div>
+            <div class="review-quote-mark">“</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              "We ordered the family feast for four — generous portions, aromatic rice, and the service was warm from start to finish."
+            </p>
+          </div>
+          <div>
+            <div class="review-divider"></div>
+            <div class="review-user">
+              <div class="review-avatar">F</div>
+              <div class="review-meta">
+                <span class="review-name">Fathima Beevi</span>
+                <span class="review-city">Malappuram</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duplicate 3 -->
+        <div class="review-card" aria-hidden="true">
+          <div>
+            <div class="review-quote-mark">“</div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              "Authentic Arabian vibes. The Al Faham with garlic sauce is my go-to order every single weekend. Highly recommended."
+            </p>
+          </div>
+          <div>
+            <div class="review-divider"></div>
+            <div class="review-user">
+              <div class="review-avatar">A</div>
+              <div class="review-meta">
+                <span class="review-name">Arjun Menon</span>
+                <span class="review-city">Thrissur</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duplicate 4 -->
+        <div class="review-card" aria-hidden="true">
+          <div>
+            <div class="review-quote-mark">“</div>
+            <div class="review-stars">★★★★☆</div>
+            <p class="review-text">
+              "Beautiful ambiance, generous plates, and real wood-fired taste. You can tell the difference from the very first bite."
+            </p>
+          </div>
+          <div>
+            <div class="review-divider"></div>
+            <div class="review-user">
+              <div class="review-avatar">S</div>
+              <div class="review-meta">
+                <span class="review-name">Sana Yusuf</span>
+                <span class="review-city">Calicut</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       5.8 VISIT SECTION
+       ===================================================================== -->
+  <section class="visit-section" id="visit">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">FIND US</span>
+        <h2 class="section-title">Visit Al Mashi</h2>
+        <div class="gold-divider" aria-hidden="true">
+          <span class="divider-sq"></span>
+          <span class="divider-line"></span>
+          <span class="divider-sq"></span>
+        </div>
+        <p class="section-sub">Dine in with us, or order for delivery and takeaway.</p>
+      </div>
+
+      <div class="visit-grid">
+        <!-- 1. Location -->
+        <article class="visit-card reveal-3d">
+          <div class="visit-icon-wrap" aria-hidden="true">📍</div>
+          <h3 class="visit-title">Location</h3>
+          <p class="visit-body">
+            Main Road, Ponnani<br />
+            Malappuram, Kerala
+          </p>
+          <a href="https://maps.google.com/?q=Ponnani+Kerala" target="_blank" rel="noopener noreferrer" class="visit-link">
+            Get Directions →
+          </a>
+        </article>
+
+        <!-- 2. Open Hours -->
+        <article class="visit-card reveal-3d">
+          <div class="visit-icon-wrap" aria-hidden="true">🕐</div>
+          <h3 class="visit-title">Open Hours</h3>
+          <p class="visit-body">
+            Mon – Sun<br />
+            11:00 AM – 11:30 PM
+          </p>
+          <span class="visit-link" style="text-decoration:none; cursor:default;">Open Every Day</span>
+        </article>
+
+        <!-- 3. Reserve / Order -->
+        <article class="visit-card reveal-3d">
+          <div class="visit-icon-wrap" aria-hidden="true">📞</div>
+          <h3 class="visit-title">Reserve / Order</h3>
+          <p class="visit-body">
+            Call for table booking<br />
+            <a href="tel:+910000000000" class="visit-link">+91 00000 00000</a>
+          </p>
+          <a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer" class="visit-link">
+            WhatsApp Available →
+          </a>
+        </article>
+
+        <!-- 4. Delivery -->
+        <article class="visit-card reveal-3d">
+          <div class="visit-icon-wrap" aria-hidden="true">🚗</div>
+          <h3 class="visit-title">Delivery</h3>
+          <p class="visit-body">
+            Available within 5 km radius<br />
+            Swiggy · Zomato
+          </p>
+          <a href="#menu" class="visit-link">Order Direct →</a>
+        </article>
+      </div>
+
+      <!-- GOOGLE MAPS EMBED PLACEHOLDER: Uncomment and add your Google Maps embed code below
+      <div class="maps-placeholder">
+        <iframe title="Al Mashi Mandi Map Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.5!2d75.9!3d10.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDQ2JzAwLjAiTiA3NcKwNTQnMDAuMCJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin" width="100%" height="320" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      -->
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       5.9 CTA BANNER
+       ===================================================================== -->
+  <section class="cta-banner-section" aria-label="Order Call To Action">
+    <div class="cta-banner-content">
+      <h2 class="cta-banner-title">Hungry for Real Mandi?</h2>
+      <p class="cta-banner-text">
+        Order online or reserve your table today — taste the tradition of Al Mashi Mandi.
+      </p>
+      <a href="order.html" class="btn-cta-dark">Order on WhatsApp Now</a>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       5.10 FOOTER
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div class="footer-col">
+          <div class="footer-brand-title">AL MASHI</div>
+          <span class="footer-brand-subtitle">MANDI</span>
+          <p class="footer-brand-desc">
+            Authentic Kuzhi Mandi in Ponnani, Kerala. Prepared in traditional underground pits fired by wood embers for unmatched smokiness and tenderness.
+          </p>
+        </div>
+
+        <!-- Col 2: Explore -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Explore</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#story" class="footer-nav-link">Our Story</a></li>
+            <li><a href="#about" class="footer-nav-link">About Us</a></li>
+            <li><a href="#menu" class="footer-nav-link">Menu & Specials</a></li>
+            <li><a href="#team" class="footer-nav-link">Our Team</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Order -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Order</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#menu" class="footer-nav-link">Swiggy</a></li>
+            <li><a href="#menu" class="footer-nav-link">Zomato</a></li>
+            <li><a href="tel:+910000000000" class="footer-nav-link">Call to Order</a></li>
+            <li><a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer" class="footer-nav-link">WhatsApp Order</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Follow -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Follow</h4>
+          <ul class="footer-nav-list">
+            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-nav-link">Instagram</a></li>
+            <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-nav-link">Facebook</a></li>
+            <li><a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="footer-nav-link">Google Maps</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 2026 Al Mashi Mandi. All rights reserved. &middot; Crafted with tradition.
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       ⚙️ 8. JAVASCRIPT BEHAVIORS (Vanilla JS, No Dependencies)
+       ===================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* 1. Header scroll listener (scrollY > 40 adds .scrolled) */
+      const siteHeader = document.getElementById('siteHeader');
+      const handleHeaderScroll = () => {
+        if (window.scrollY > 40) {
+          siteHeader.classList.add('scrolled');
+        } else {
+          siteHeader.classList.remove('scrolled');
+        }
+      };
+      window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+      handleHeaderScroll();
+
+      /* 2. Mobile Menu Toggle */
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
+      const navLinks = document.getElementById('navLinks');
+      const navItems = navLinks.querySelectorAll('a');
+
+      hamburgerBtn.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        hamburgerBtn.classList.toggle('active', isOpen);
+        hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      // Close mobile menu when any nav link is clicked
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          if (navLinks.classList.contains('open')) {
+            navLinks.classList.remove('open');
+            hamburgerBtn.classList.remove('active');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
+      /* 3. Hero Atmosphere Dots & Glow Themes */
+      const heroSection = document.getElementById('hero');
+      const heroDots = document.querySelectorAll('.hero-dot');
+      const themes = ['gold', 'saffron', 'emerald', 'night'];
+
+      heroDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          heroDots.forEach(d => d.classList.remove('active'));
+          dot.classList.add('active');
+
+          // Remove other theme classes
+          themes.forEach(t => heroSection.classList.remove(`theme-${t}`));
+          const chosenTheme = dot.getAttribute('data-theme');
+          if (chosenTheme && chosenTheme !== 'gold') {
+            heroSection.classList.add(`theme-${chosenTheme}`);
+          }
+        });
+      });
+
+      /* 4. IntersectionObserver for Reveal Animations (.reveal-3d, .reveal-left, .reveal-right) */
+      const revealElements = document.querySelectorAll('.reveal-3d, .reveal-left, .reveal-right');
+      
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              // Stagger siblings if inside grid or container
+              const parent = el.parentElement;
+              if (parent) {
+                const siblings = Array.from(parent.children).filter(child => child.classList.contains('reveal-3d') || child.classList.contains('reveal-left') || child.classList.contains('reveal-right'));
+                const index = siblings.indexOf(el);
+                if (index > -1) {
+                  el.style.transitionDelay = `${index * 90}ms`;
+                }
+              }
+              el.classList.add('visible');
+              observer.unobserve(el);
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+      } else {
+        // Fallback for older browsers
+        revealElements.forEach(el => el.classList.add('visible'));
+      }
+
+      /* 5. Menu Category Filter */
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const productCards = document.querySelectorAll('.product-card');
+
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filter = btn.getAttribute('data-filter');
+
+          productCards.forEach(card => {
+            const cardCat = card.getAttribute('data-cat');
+            if (filter === 'all' || cardCat === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      /* 6. Add-to-Order Button Feedback ("✓ Added" for 1.4s then revert) */
+      const addOrderButtons = document.querySelectorAll('.btn-add-order');
+      addOrderButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const originalText = btn.textContent;
+          btn.textContent = '✓ Added';
+          btn.classList.add('added');
+          btn.disabled = true;
+
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.classList.remove('added');
+            btn.disabled = false;
+          }, 1400);
+        });
+      });
+
+      /* 7. Wishlist Heart Toggle (♡ ↔ ♥) */
+      const wishlistButtons = document.querySelectorAll('.btn-wishlist');
+      wishlistButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isActive = btn.classList.toggle('active');
+          btn.textContent = isActive ? '♥' : '♡';
+          btn.setAttribute('aria-label', isActive ? 'Remove from wishlist' : 'Add to wishlist');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
