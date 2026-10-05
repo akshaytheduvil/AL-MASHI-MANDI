@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visit & Table Reservation — Al Mashi Mandi | Ponnani, Kerala</title>
+  <meta name="description" content="Visit Al Mashi Mandi in Main Road, Ponnani, Kerala. Reserve family dining tables, order takeaway or book party catering for authentic Kuzhi Mandi." />
+
+  <!-- Google Fonts CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --green-950: #03160F;
+      --green-900: #062B1F;
+      --green-800: #0B3D2E;
+      --green-700: #0F4A38;
+      --gold: #C9A227;
+      --gold-light: #E4C55A;
+      --cream: #F7F2E7;
+      --sand: #EDE4D1;
+      --text: #EDE4D1;
+      --text-dim: #A8B5AE;
+      --radius: 12px;
+      --max: 1280px;
+
+      --font-heading: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(180deg, #03160F 0%, #082218 45%, #03160F 100%);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Fixed Glass Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(6, 43, 31, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.25);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 24px;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, var(--green-800), var(--green-950));
+      box-shadow: 0 0 10px rgba(201, 162, 39, 0.3);
+    }
+
+    .brand-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-monogram {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+      display: none;
+    }
+
+    .brand-wordmark {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-line1 {
+      font-family: var(--font-heading);
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 3px;
+      line-height: 1;
+    }
+
+    .brand-line2 {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 5px;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--cream);
+      transition: color 0.25s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--gold);
+    }
+
+    /* Mobile Hamburger */
+    .hamburger-btn {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 32px;
+      height: 22px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 110;
+    }
+
+    .hamburger-line {
+      width: 26px;
+      height: 2px;
+      background-color: var(--gold);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .hamburger-btn.active .hamburger-line:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+    .hamburger-btn.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger-btn.active .hamburger-line:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+
+    .header-cta-btn {
+      padding: 10px 22px;
+      border-radius: 6px;
+      background: var(--gold);
+      color: var(--green-950);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.25s ease;
+    }
+
+    .header-cta-btn:hover {
+      background: var(--gold-light);
+      box-shadow: 0 0 18px rgba(201, 162, 39, 0.45);
+    }
+
+    /* Page Hero */
+    .page-hero {
+      padding: 100px 24px 60px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 30%, rgba(15, 74, 56, 0.6), transparent 70%), linear-gradient(180deg, #03160F, #062B1F);
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 5.5vw, 62px);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.15;
+    }
+
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 160px;
+      margin: 18px auto;
+    }
+
+    .gold-divider .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .gold-divider .divider-sq {
+      width: 6px;
+      height: 6px;
+      background-color: var(--gold);
+      transform: rotate(45deg);
+    }
+
+    .hero-sub {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 15px;
+      color: var(--sand);
+      font-weight: 300;
+    }
+
+    /* 4 Info Cards Grid */
+    .info-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin: 40px auto 70px;
+    }
+
+    .info-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+      border: 1px solid rgba(201, 162, 39, 0.22);
+      border-radius: var(--radius);
+      padding: 32px 22px;
+      text-align: center;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .info-card:hover {
+      border-color: var(--gold);
+      background: rgba(201, 162, 39, 0.04);
+      transform: translateY(-4px);
+    }
+
+    .info-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+      background: radial-gradient(circle, var(--green-800), var(--green-950));
+    }
+
+    .info-card-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+
+    .info-card-text {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .info-card-link {
+      color: var(--gold);
+      font-size: 13.5px;
+      font-weight: 600;
+      margin-top: 10px;
+      display: inline-block;
+      transition: color 0.2s ease;
+    }
+
+    .info-card-link:hover {
+      color: var(--gold-light);
+      text-decoration: underline;
+    }
+
+    /* Split Section: Table Reservation Form + Map */
+    .reservation-split-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: flex-start;
+      margin-bottom: 90px;
+    }
+
+    .form-card-container {
+      background: linear-gradient(180deg, rgba(6, 43, 31, 0.9), rgba(3, 22, 15, 0.95));
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      border-radius: var(--radius);
+      padding: 36px 30px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-card-title {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .form-card-sub {
+      font-size: 13.5px;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+
+    .reservation-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--cream);
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 8px;
+      background: rgba(3, 22, 15, 0.85);
+      border: 1px solid rgba(201, 162, 39, 0.25);
+      color: var(--cream);
+      font-family: inherit;
+      font-size: 14px;
+      transition: all 0.25s ease;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 10px rgba(201, 162, 39, 0.35);
+    }
+
+    .btn-submit-booking {
+      width: 100%;
+      padding: 15px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--green-950);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-submit-booking:hover {
+      background: linear-gradient(135deg, #FFFFFF, var(--gold-light));
+      box-shadow: 0 8px 24px rgba(201, 162, 39, 0.5);
+      transform: translateY(-2px);
+    }
+
+    /* Map Box */
+    .map-box-container {
+      background: rgba(6, 43, 31, 0.6);
+      border: 1px solid rgba(201, 162, 39, 0.25);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .map-iframe-wrap {
+      width: 100%;
+      height: 320px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(201, 162, 39, 0.2);
+      background: #03160F;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--text-dim);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #020F0A;
+      padding: 60px 0 30px;
+      border-top: 1px solid rgba(201, 162, 39, 0.15);
+      font-size: 14px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 3px;
+    }
+
+    .footer-desc {
+      color: var(--text-dim);
+      font-size: 13.5px;
+      margin-top: 10px;
+      max-width: 320px;
+    }
+
+    .footer-col-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: var(--text-dim);
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(201, 162, 39, 0.15);
+      padding-top: 20px;
+      text-align: center;
+      color: rgba(237, 228, 209, 0.4);
+      font-size: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .reservation-split-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .header-cta-btn {
+        display: none;
+      }
+      .hamburger-btn {
+        display: flex;
+      }
+      .nav-links {
+        position: fixed;
+        top: 74px;
+        left: 0;
+        width: 100%;
+        background: rgba(6, 43, 31, 0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        flex-direction: column;
+        padding: 30px 24px;
+        gap: 20px;
+        border-bottom: 1px solid rgba(201, 162, 39, 0.25);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.35s ease, opacity 0.35s ease;
+        z-index: 99;
+      }
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .nav-link {
+        font-size: 15px;
+        letter-spacing: 2px;
+        padding: 8px 0;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="index.html" class="brand-block" aria-label="Al Mashi Mandi Home">
+        <div class="brand-mark">
+          <img src="al mashi mandi logo.jpg" alt="Al Mashi Mandi Logo" class="brand-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="brand-monogram">AM</div>
+        </div>
+        <div class="brand-wordmark">
+          <span class="brand-line1">AL MASHI</span>
+          <span class="brand-line2">MANDI</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">Our Heritage</a></li>
+          <li><a href="index.html#menu" class="nav-link">Signature Specials</a></li>
+          <li><a href="order.html" class="nav-link">Order Online</a></li>
+          <li><a href="contact.html" class="nav-link active">Visit &amp; Table Booking</a></li>
+        </ul>
+      </nav>
+
+      <a href="order.html" class="header-cta-btn">Order Now</a>
+
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <span class="hero-eyebrow">FIND US & DINE WITH US</span>
+    <h1 class="hero-title">Experience Arabian Hospitality</h1>
+    <div class="gold-divider" aria-hidden="true">
+      <span class="divider-sq"></span>
+      <span class="divider-line"></span>
+      <span class="divider-sq"></span>
+    </div>
+    <p class="hero-sub">
+      Located in the historic coastal town of Ponnani, Kerala. Join us for wood-fired Kuzhi Mandi dining, or reserve your table in advance.
+    </p>
+    <div style="margin-top: 18px;">
+      <a href="order.html" style="display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--gold); background: rgba(201,162,39,0.12); padding: 8px 18px; border-radius: 20px; border: 1px solid rgba(201,162,39,0.3); transition: all 0.25s ease;">
+        <span>🛵 Looking for doorstep food delivery instead?</span>
+        <strong>Order Online Here →</strong>
+      </a>
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <main class="container">
+    
+    <!-- 4 Info Cards -->
+    <div class="info-cards-grid">
+      
+      <!-- Card 1: Location -->
+      <article class="info-card">
+        <div class="info-icon" aria-hidden="true">📍</div>
+        <h2 class="info-card-title">Our Location</h2>
+        <p class="info-card-text">
+          Main Road, Ponnani<br />
+          Malappuram District, Kerala
+        </p>
+        <a href="https://maps.google.com/?q=Ponnani+Kerala" target="_blank" rel="noopener noreferrer" class="info-card-link">
+          Open in Google Maps →
+        </a>
+      </article>
+
+      <!-- Card 2: Hours -->
+      <article class="info-card">
+        <div class="info-icon" aria-hidden="true">🕐</div>
+        <h2 class="info-card-title">Opening Hours</h2>
+        <p class="info-card-text">
+          Monday – Sunday<br />
+          11:00 AM – 11:30 PM
+        </p>
+        <span class="info-card-link" style="text-decoration:none; cursor:default; color:var(--gold-light);">Open Every Day</span>
+      </article>
+
+      <!-- Card 3: Call & Reserve -->
+      <article class="info-card">
+        <div class="info-icon" aria-hidden="true">📞</div>
+        <h2 class="info-card-title">Phone Booking</h2>
+        <p class="info-card-text">
+          Direct Table & Takeaway Call<br />
+          <a href="tel:+910000000000" style="color:var(--cream); font-weight:600;">+91 00000 00000</a>
+        </p>
+        <a href="tel:+910000000000" class="info-card-link">Call Restaurant Now →</a>
+      </article>
+
+      <!-- Card 4: WhatsApp & Delivery -->
+      <article class="info-card">
+        <div class="info-icon" aria-hidden="true">💬</div>
+        <h2 class="info-card-title">WhatsApp Orders</h2>
+        <p class="info-card-text">
+          Instant WhatsApp Ordering<br />
+          Delivery within 5 km & Takeaway
+        </p>
+        <a href="order.html" class="info-card-link">Launch Online Portal →</a>
+      </article>
+
+    </div>
+
+    <!-- Split Section: Table Booking Form + Location Map -->
+    <div class="reservation-split-grid">
+      
+      <!-- Table Booking Form -->
+      <div class="form-card-container">
+        <h2 class="form-card-title">Reserve a Table</h2>
+        <p class="form-card-sub">Planning a family gathering or weekend feast? Book your table in advance and skip the waiting queue.</p>
+
+        <!-- Quick delivery note -->
+        <div style="background: rgba(201,162,39,0.08); border: 1px solid rgba(201,162,39,0.22); border-radius: 8px; padding: 10px 14px; margin-bottom: 20px; font-size: 13px; color: var(--sand); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+          <span>📦 Want hot Mandi &amp; cold drinks delivered to your home?</span>
+          <a href="order.html" style="color: var(--gold); font-weight: 600; text-decoration: underline;">Order Online Now &rarr;</a>
+        </div>
+
+        <form class="reservation-form" id="tableBookingForm" onsubmit="handleTableReservation(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bookName" class="form-label">Full Name *</label>
+              <input type="text" id="bookName" class="form-input" placeholder="e.g. Akshaya" required />
+            </div>
+            <div class="form-group">
+              <label for="bookPhone" class="form-label">WhatsApp Number *</label>
+              <input type="tel" id="bookPhone" class="form-input" placeholder="e.g. 9876543210" pattern="[0-9]{10,12}" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bookDate" class="form-label">Date *</label>
+              <input type="date" id="bookDate" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label for="bookTime" class="form-label">Time Slot *</label>
+              <select id="bookTime" class="form-select" required>
+                <option value="12:30 PM (Lunch)">12:30 PM (Lunch)</option>
+                <option value="01:30 PM (Lunch)">01:30 PM (Lunch)</option>
+                <option value="02:30 PM (Lunch)">02:30 PM (Lunch)</option>
+                <option value="07:30 PM (Dinner)">07:30 PM (Dinner)</option>
+                <option value="08:30 PM (Dinner)">08:30 PM (Dinner)</option>
+                <option value="09:30 PM (Dinner)">09:30 PM (Dinner)</option>
+                <option value="10:30 PM (Late Dinner)">10:30 PM (Late Dinner)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bookGuests" class="form-label">Number of Guests *</label>
+              <select id="bookGuests" class="form-select" required>
+                <option value="2 Guests">2 Guests</option>
+                <option value="3-4 Guests">3 - 4 Guests</option>
+                <option value="5-6 Guests">5 - 6 Guests</option>
+                <option value="7-10 Guests (Large Table)">7 - 10 Guests (Large Table)</option>
+                <option value="10+ Guests (Majlis Group)">10+ Guests (Majlis Group)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="bookSeating" class="form-label">Seating Preference</label>
+              <select id="bookSeating" class="form-select">
+                <option value="Traditional Floor Majlis">Traditional Arabian Floor Majlis</option>
+                <option value="Standard Table Seating">Standard Table Dining</option>
+                <option value="Private Family Cabin">Private Family Cabin</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="bookNotes" class="form-label">Special Requests (Optional)</label>
+            <textarea id="bookNotes" class="form-textarea" rows="2" placeholder="e.g. Birthday celebration, pre-order 1 Full Mutton Mandi, high chair for child"></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit-booking">
+            <span>📅 Send Table Reservation via WhatsApp</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Map & Directions -->
+      <div class="map-box-container">
+        <div>
+          <h3 style="font-family:var(--font-heading); font-size:24px; color:var(--cream); margin-bottom:4px;">How to Reach Us</h3>
+          <p style="font-size:13px; color:var(--text-dim);">Conveniently situated right on Main Road, Ponnani with dedicated parking spaces for family cars.</p>
+        </div>
+
+        <div class="map-iframe-wrap">
+          <iframe title="Al Mashi Mandi Ponnani Location" src="https://maps.google.com/maps?q=Ponnani+Kerala&t=&z=14&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <div style="font-size:13px; color:var(--text-dim); display:flex; flex-direction:column; gap:6px;">
+          <div>🚗 <strong>Parking:</strong> Free customer parking available in front.</div>
+          <div>🛵 <strong>Delivery Reach:</strong> Delivering hot within 5 km in Ponnani, Edappal road & coastal region.</div>
+          <div style="margin-top: 4px;">🏺 <strong>Our Heritage:</strong> <a href="about.html" style="color: var(--gold); text-decoration: underline;">Read about our underground kuzhi pit cooking craft &rarr;</a></div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div class="footer-col">
+          <div class="footer-brand-title">AL MASHI</div>
+          <span style="font-size: 10px; font-weight: 600; color: var(--gold-light); letter-spacing: 5px; display: block; margin-top: 2px; margin-bottom: 12px;">MANDI</span>
+          <p class="footer-desc">
+            Authentic Kuzhi Mandi in Ponnani, Kerala. Prepared in underground pits fired with wood embers for unmatched smokiness and tenderness.
+          </p>
+        </div>
+
+        <!-- Col 2: Navigation & Pages -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Explore &amp; Pages</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Heritage &amp; Craft</a></li>
+            <li><a href="order.html">Full Online Menu &amp; Ordering</a></li>
+            <li><a href="contact.html">Visit &amp; Table Booking</a></li>
+            <li><a href="index.html#reviews">Customer Reviews</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Order -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Order Online</h4>
+          <ul class="footer-links">
+            <li><a href="order.html#cat-mandi">Kuzhi Mandi (Quarter, Half, Full)</a></li>
+            <li><a href="order.html#cat-grills">Arabian Grills</a></li>
+            <li><a href="order.html#cat-drinks">Soft Drinks (Pepsi, 7 Up, Coke)</a></li>
+            <li><a href="tel:+910000000000">Call: +91 00000 00000</a></li>
+            <li><a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer">WhatsApp Ordering</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Visit & Reserve -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Visit Us</h4>
+          <ul class="footer-links">
+            <li>Main Road, Ponnani, Malappuram, Kerala</li>
+            <li>Mon – Sun: 11:00 AM – 11:30 PM</li>
+            <li><a href="contact.html" style="color: var(--gold); font-weight: 600;">Reserve a Table Online &rarr;</a></li>
+            <li><a href="https://maps.google.com/?q=Ponnani+Kerala" target="_blank" rel="noopener noreferrer">Google Maps Directions &rarr;</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Al Mashi Mandi. All rights reserved. &middot; Crafted with tradition in Ponnani, Kerala.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const RESTAURANT_WHATSAPP_NUMBER = "910000000000";
+
+    /* Mobile Hamburger Menu Toggle */
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburgerBtn && navLinks) {
+      hamburgerBtn.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        hamburgerBtn.classList.toggle('active', isOpen);
+        hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          hamburgerBtn.classList.remove('active');
+          hamburgerBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    function handleTableReservation(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('bookName').value.trim();
+      const phone = document.getElementById('bookPhone').value.trim();
+      const date = document.getElementById('bookDate').value;
+      const time = document.getElementById('bookTime').value;
+      const guests = document.getElementById('bookGuests').value;
+      const seating = document.getElementById('bookSeating').value;
+      const notes = document.getElementById('bookNotes').value.trim();
+
+      let msg = `===============================\n`;
+      msg += `📅 *TABLE RESERVATION REQUEST*\n`;
+      msg += `🏛️ *AL MASHI MANDI — PONNANI*\n`;
+      msg += `===============================\n\n`;
+
+      msg += `👤 *Guest Name:* ${name}\n`;
+      msg += `📱 *Phone / WhatsApp:* ${phone}\n`;
+      msg += `🗓️ *Date:* ${date}\n`;
+      msg += `⏰ *Time Slot:* ${time}\n`;
+      msg += `👥 *Number of Guests:* ${guests}\n`;
+      msg += `🪑 *Seating Preference:* ${seating}\n`;
+
+      if (notes) {
+        msg += `📝 *Special Requests:* ${notes}\n`;
+      }
+
+      msg += `\n===============================\n`;
+      msg += `_Sent via Al Mashi Mandi Website_`;
+
+      const encodedMsg = encodeURIComponent(msg);
+      window.open(`https://wa.me/${RESTAURANT_WHATSAPP_NUMBER}?text=${encodedMsg}`, '_blank');
+
+      alert('Thank you! Your table reservation request has been prepared and sent to Al Mashi Mandi on WhatsApp.');
+    }
+  </script>
+
+</body>
+</html>

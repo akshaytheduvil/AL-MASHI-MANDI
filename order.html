@@ -1,0 +1,2444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Online — Al Mashi Mandi | Authentic Kuzhi Mandi</title>
+  <meta name="description" content="Order authentic underground pit-cooked Kuzhi Mandi, Arabian grills, fresh soft drinks & desserts online. Fast delivery in Ponnani, Kerala with easy WhatsApp checkout." />
+
+  <!-- Google Fonts CDN: Cormorant Garamond & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =====================================================================
+       🎨 DESIGN SYSTEM (Matching Al Mashi Mandi Brand Identity)
+       ===================================================================== */
+    :root {
+      --green-950: #03160F;
+      --green-900: #062B1F;
+      --green-800: #0B3D2E;
+      --green-700: #0F4A38;
+      --gold: #C9A227;
+      --gold-light: #E4C55A;
+      --gold-deep: #A8841A;
+      --cream: #F7F2E7;
+      --sand: #EDE4D1;
+      --text: #EDE4D1;
+      --text-dim: #A8B5AE;
+      --red: #C42E2E;
+      --green-veg: #27AE60;
+      --ink: #0A0A0A;
+      --radius: 12px;
+      --max: 1280px;
+
+      --font-heading: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --transition-smooth: 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: linear-gradient(180deg, #03160F 0%, #072218 45%, #03160F 100%);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.55;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 90px;
+    }
+
+    /* Container */
+    .order-container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    /* =====================================================================
+       TOP APP HEADER (Glassmorphic)
+       ===================================================================== */
+    .order-header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 90;
+      background: rgba(6, 43, 31, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.25);
+      transition: background 0.3s ease;
+    }
+
+    .order-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 20px;
+      gap: 16px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, var(--green-800), var(--green-950));
+      box-shadow: 0 0 10px rgba(201, 162, 39, 0.3);
+      flex-shrink: 0;
+    }
+
+    .brand-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-monogram {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold);
+      display: none;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 2.5px;
+      line-height: 1;
+    }
+
+    .brand-subtitle {
+      font-size: 9.5px;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 5px;
+      margin-top: 3px;
+    }
+
+    .back-home-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--cream);
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(201, 162, 39, 0.2);
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .back-home-link:hover {
+      background: rgba(201, 162, 39, 0.12);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    /* Search Input in Header */
+    .header-search-wrap {
+      flex: 1;
+      max-width: 380px;
+      position: relative;
+    }
+
+    .header-search-input {
+      width: 100%;
+      padding: 9px 14px 9px 38px;
+      border-radius: 24px;
+      background: rgba(3, 22, 15, 0.8);
+      border: 1px solid rgba(201, 162, 39, 0.25);
+      color: var(--cream);
+      font-size: 13.5px;
+      font-family: inherit;
+      transition: all 0.25s ease;
+    }
+
+    .header-search-input:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 12px rgba(201, 162, 39, 0.3);
+      background: rgba(3, 22, 15, 0.95);
+    }
+
+    .header-search-input::placeholder {
+      color: var(--text-dim);
+      font-size: 13px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      color: var(--gold);
+      pointer-events: none;
+    }
+
+    /* Cart Header Trigger */
+    .header-cart-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 18px;
+      border-radius: 24px;
+      background: var(--gold);
+      color: var(--green-950);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .header-cart-btn:hover {
+      background: var(--gold-light);
+      box-shadow: 0 0 16px rgba(201, 162, 39, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .cart-count-badge {
+      background: var(--green-950);
+      color: var(--gold);
+      border-radius: 12px;
+      padding: 1px 7px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* =====================================================================
+       RESTAURANT INFO HERO BAR
+       ===================================================================== */
+    .restaurant-hero-card {
+      background: linear-gradient(135deg, rgba(11, 61, 46, 0.65) 0%, rgba(6, 43, 31, 0.85) 100%);
+      border: 1px solid rgba(201, 162, 39, 0.25);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 24px auto 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .restaurant-hero-card::after {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 162, 39, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .restaurant-hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .restaurant-name {
+      font-family: var(--font-heading);
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.15;
+    }
+
+    .restaurant-tagline {
+      font-size: 14px;
+      color: var(--gold-light);
+      margin-top: 4px;
+      font-weight: 400;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(39, 174, 96, 0.15);
+      border: 1px solid rgba(39, 174, 96, 0.4);
+      color: #2ECC71;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #2ECC71;
+      box-shadow: 0 0 8px #2ECC71;
+      animation: statusBlink 2s infinite ease-in-out;
+    }
+
+    @keyframes statusBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .restaurant-meta-bar {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--text-dim);
+      border-top: 1px solid rgba(201, 162, 39, 0.15);
+      padding-top: 14px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .meta-item strong {
+      color: var(--cream);
+    }
+
+    /* =====================================================================
+       STICKY CATEGORY FILTER BAR
+       ===================================================================== */
+    .category-nav-bar {
+      position: sticky;
+      top: 69px;
+      z-index: 80;
+      background: rgba(3, 22, 15, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+      padding: 10px 0;
+      margin-bottom: 24px;
+    }
+
+    .category-scroll-list {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 4px 0;
+    }
+
+    .category-scroll-list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cat-tab-btn {
+      padding: 8px 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(201, 162, 39, 0.2);
+      color: var(--text-dim);
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cat-tab-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .cat-tab-btn.active {
+      background: var(--gold);
+      color: var(--green-950);
+      border-color: var(--gold);
+      font-weight: 700;
+      box-shadow: 0 0 12px rgba(201, 162, 39, 0.35);
+    }
+
+    /* =====================================================================
+       LAYOUT: MAIN PRODUCTS (LEFT) + STICKY CART (RIGHT)
+       ===================================================================== */
+    .order-main-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    /* Category Section */
+    .category-section-block {
+      margin-bottom: 40px;
+    }
+
+    .category-heading {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.18);
+      padding-bottom: 8px;
+    }
+
+    .category-heading .cat-icon {
+      font-size: 22px;
+    }
+
+    .products-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Single Product Item Card (Zomato-style in Luxury Dark) */
+    .food-item-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.015) 100%);
+      border: 1px solid rgba(201, 162, 39, 0.18);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: 1fr 140px;
+      gap: 18px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .food-item-card:hover {
+      border-color: rgba(201, 162, 39, 0.5);
+      background: rgba(201, 162, 39, 0.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .food-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .food-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Veg / Non-Veg Indicator Icon */
+    .type-badge {
+      width: 14px;
+      height: 14px;
+      border: 1.5px solid;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .type-badge.non-veg {
+      border-color: var(--red);
+    }
+
+    .type-badge.non-veg::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--red);
+    }
+
+    .type-badge.veg {
+      border-color: var(--green-veg);
+    }
+
+    .type-badge.veg::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--green-veg);
+    }
+
+    .food-tag-pill {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(201, 162, 39, 0.15);
+      color: var(--gold-light);
+      border: 1px solid rgba(201, 162, 39, 0.3);
+    }
+
+    .food-title {
+      font-family: var(--font-heading);
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+
+    .food-desc {
+      font-size: 12.5px;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Mandi Portion Selector Pills */
+    .portion-selector-group {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .portion-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
+    .portion-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .portion-btn {
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(3, 22, 15, 0.85);
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      color: var(--text-dim);
+      font-size: 11.5px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .portion-btn:hover {
+      border-color: var(--gold);
+      color: var(--cream);
+    }
+
+    .portion-btn.active {
+      background: var(--green-800);
+      border-color: var(--gold);
+      color: var(--gold-light);
+      font-weight: 700;
+      box-shadow: 0 0 8px rgba(201, 162, 39, 0.25);
+    }
+
+    .food-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .food-price-current {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .food-price-original {
+      font-size: 12.5px;
+      color: #888;
+      text-decoration: line-through;
+    }
+
+    /* Food Card Right Action & Image Area */
+    .food-action-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .food-img-thumb {
+      width: 110px;
+      height: 110px;
+      border-radius: 10px;
+      border: 1px solid rgba(201, 162, 39, 0.25);
+      background: radial-gradient(circle, var(--green-800), var(--green-950));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .food-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .food-thumb-fallback {
+      font-size: 34px;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+    }
+
+    /* Add To Cart & Quantity Counter Button */
+    .add-to-cart-btn {
+      position: relative;
+      margin-top: -16px;
+      z-index: 2;
+      width: 100px;
+      padding: 7px 12px;
+      border-radius: 8px;
+      background: var(--gold);
+      color: var(--green-950);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      border: 1px solid var(--gold);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .add-to-cart-btn:hover {
+      background: var(--gold-light);
+      transform: scale(1.04);
+    }
+
+    /* Quantity Counter inside Cart Button */
+    .qty-counter-control {
+      display: none;
+      position: relative;
+      margin-top: -16px;
+      z-index: 2;
+      width: 100px;
+      border-radius: 8px;
+      background: var(--green-900);
+      border: 1px solid var(--gold);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .qty-btn {
+      background: transparent;
+      color: var(--gold);
+      font-size: 14px;
+      font-weight: 800;
+      padding: 6px 10px;
+      transition: background 0.2s ease;
+    }
+
+    .qty-btn:hover {
+      background: rgba(201, 162, 39, 0.15);
+    }
+
+    .qty-num {
+      color: var(--cream);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* =====================================================================
+       STICKY CART SIDEBAR (DESKTOP)
+       ===================================================================== */
+    .cart-sidebar {
+      position: sticky;
+      top: 135px;
+      background: linear-gradient(180deg, rgba(6, 43, 31, 0.95), rgba(3, 22, 15, 0.98));
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      border-radius: var(--radius);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      max-height: calc(100vh - 160px);
+    }
+
+    .cart-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11, 61, 46, 0.3);
+    }
+
+    .cart-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cart-item-count-text {
+      font-size: 12px;
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
+    .cart-items-scroll {
+      padding: 16px 20px;
+      overflow-y: auto;
+      max-height: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .cart-items-scroll::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .cart-items-scroll::-webkit-scrollbar-thumb {
+      background: rgba(201, 162, 39, 0.3);
+      border-radius: 4px;
+    }
+
+    /* Single Cart Row */
+    .cart-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 12px;
+      align-items: center;
+      border-bottom: 1px dashed rgba(201, 162, 39, 0.12);
+      padding-bottom: 12px;
+    }
+
+    .cart-row-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-row-title {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--cream);
+    }
+
+    .cart-row-portion {
+      font-size: 11.5px;
+      color: var(--gold-light);
+    }
+
+    .cart-row-stepper {
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      border-radius: 6px;
+      background: rgba(3, 22, 15, 0.8);
+      overflow: hidden;
+    }
+
+    .cart-step-btn {
+      background: transparent;
+      color: var(--gold);
+      font-size: 12px;
+      padding: 3px 8px;
+      font-weight: 700;
+    }
+
+    .cart-step-btn:hover {
+      background: rgba(201, 162, 39, 0.15);
+    }
+
+    .cart-step-val {
+      font-size: 12px;
+      color: var(--cream);
+      font-weight: 600;
+      padding: 0 4px;
+    }
+
+    .cart-row-price {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gold);
+      min-width: 55px;
+      text-align: right;
+    }
+
+    /* Cart Empty State */
+    .cart-empty-state {
+      padding: 36px 20px;
+      text-align: center;
+      color: var(--text-dim);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cart-empty-icon {
+      font-size: 42px;
+      opacity: 0.6;
+    }
+
+    /* Cart Summary & Checkout Footer */
+    .cart-summary {
+      padding: 16px 20px;
+      border-top: 1px solid rgba(201, 162, 39, 0.2);
+      background: rgba(3, 22, 15, 0.95);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    .summary-line.total-line {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--cream);
+      border-top: 1px solid rgba(201, 162, 39, 0.2);
+      padding-top: 8px;
+      margin-top: 4px;
+    }
+
+    .summary-line.total-line .grand-price {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      color: var(--gold);
+    }
+
+    .btn-checkout-proceed {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--green-950);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 6px;
+      box-shadow: 0 6px 18px rgba(201, 162, 39, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .btn-checkout-proceed:hover:not(:disabled) {
+      background: linear-gradient(135deg, #FFFFFF, var(--gold-light));
+      box-shadow: 0 8px 24px rgba(201, 162, 39, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .btn-checkout-proceed:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      filter: grayscale(1);
+    }
+
+    /* =====================================================================
+       MOBILE FLOATING CART BAR (≤ 960px)
+       ===================================================================== */
+    .mobile-cart-bar {
+      display: none;
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      z-index: 100;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--green-950);
+      padding: 14px 20px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      align-items: center;
+      justify-content: space-between;
+      animation: slideUp 0.35s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    .mobile-cart-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-cart-items-text {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .mobile-cart-price {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .mobile-cart-action {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* =====================================================================
+       CUSTOMER ADDRESS & CHECKOUT MODAL
+       ===================================================================== */
+    .checkout-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .checkout-modal-overlay.active {
+      display: flex;
+    }
+
+    .checkout-modal-card {
+      background: linear-gradient(180deg, #062B1F, #03160F);
+      border: 1px solid var(--gold);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 540px;
+      padding: 28px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+      position: relative;
+      animation: modalZoom 0.3s ease;
+    }
+
+    @keyframes modalZoom {
+      from { transform: scale(0.94); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--red);
+      color: #FFF;
+    }
+
+    .modal-title {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .modal-subtitle {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+    }
+
+    /* Checkout Form Elements */
+    .checkout-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--cream);
+    }
+
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 8px;
+      background: rgba(3, 22, 15, 0.85);
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      color: var(--cream);
+      font-family: inherit;
+      font-size: 14px;
+      transition: all 0.25s ease;
+    }
+
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 10px rgba(201, 162, 39, 0.35);
+      background: rgba(3, 22, 15, 0.95);
+    }
+
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: rgba(237, 228, 209, 0.4);
+      font-size: 13px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* Order Type Selector Radio Pills (Delivery vs Pickup) */
+    .order-type-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .type-radio-label {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(3, 22, 15, 0.8);
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      color: var(--text-dim);
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .type-radio-label input {
+      display: none;
+    }
+
+    .type-radio-label.active {
+      background: rgba(201, 162, 39, 0.15);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    /* Order Mini Summary in Form */
+    .modal-order-summary {
+      background: rgba(3, 22, 15, 0.7);
+      border: 1px dashed rgba(201, 162, 39, 0.25);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 12.5px;
+      color: var(--cream);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    .modal-summary-total {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    /* WhatsApp Order Button */
+    .btn-whatsapp-order {
+      width: 100%;
+      padding: 15px;
+      border-radius: 8px;
+      background: #25D366;
+      color: #03160F;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .btn-whatsapp-order:hover {
+      background: #20BA5A;
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .whatsapp-icon-svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    /* =====================================================================
+       RESPONSIVE BREAKPOINTS
+       ===================================================================== */
+    @media (max-width: 960px) {
+      .order-main-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-sidebar {
+        display: none; /* Replaced by floating bottom cart bar on mobile */
+      }
+
+      .mobile-cart-bar {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .order-header-inner {
+        padding: 10px 14px;
+      }
+
+      .header-search-wrap {
+        display: none; /* Keep header clean on small mobile */
+      }
+
+      .food-item-card {
+        grid-template-columns: 1fr 110px;
+        gap: 12px;
+        padding: 14px;
+      }
+
+      .food-img-thumb {
+        width: 100px;
+        height: 100px;
+      }
+
+      .food-title {
+        font-size: 18px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =====================================================================
+       TOP APP HEADER
+       ===================================================================== -->
+  <header class="order-header">
+    <div class="order-header-inner">
+      <div class="header-left">
+        <a href="index.html" class="brand-mark" aria-label="Al Mashi Mandi Home">
+          <img src="al mashi mandi logo.jpg" alt="Al Mashi Mandi Logo" class="brand-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="brand-monogram">AM</div>
+        </a>
+        <div class="brand-text">
+          <span class="brand-title">AL MASHI</span>
+          <span class="brand-subtitle">MANDI</span>
+        </div>
+        <a href="index.html" class="back-home-link">
+          <span>←</span> <span>Home</span>
+        </a>
+      </div>
+
+      <!-- Quick Search Bar -->
+      <div class="header-search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="dishSearchInput" class="header-search-input" placeholder="Search Mandi, Grills, Pepsi, 7 Up..." aria-label="Search food items" />
+      </div>
+
+      <!-- Cart Counter Header Button -->
+      <button class="header-cart-btn" id="headerCartBtn" aria-label="View Shopping Cart">
+        <span>🛒 Cart</span>
+        <span class="cart-count-badge" id="headerCartBadge">0</span>
+        <span id="headerCartTotal">₹0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       MAIN PAGE CONTAINER
+       ===================================================================== -->
+  <main class="order-container">
+    
+    <!-- Restaurant Header Card -->
+    <section class="restaurant-hero-card">
+      <div class="restaurant-hero-top">
+        <div>
+          <h1 class="restaurant-name">Al Mashi Kuzhi Mandi</h1>
+          <p class="restaurant-tagline">Authentic Underground Pit-Cooked Arabian Delicacies & Chilled Refreshments</p>
+        </div>
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span>Open Now · Delivering</span>
+        </div>
+      </div>
+      <div class="restaurant-meta-bar">
+        <div class="meta-item"><span>⭐</span> <strong>4.8</strong> (1,200+ Reviews)</div>
+        <div class="meta-item"><span>⏱️</span> <strong>30-40 mins</strong> Delivery</div>
+        <div class="meta-item"><span>🛵</span> Home Delivery & Takeaway</div>
+        <div class="meta-item"><span>📍</span> Main Road, Ponnani, Kerala</div>
+      </div>
+    </section>
+
+    <!-- Sticky Category Nav Pills -->
+    <nav class="category-nav-bar" aria-label="Food Categories">
+      <div class="category-scroll-list">
+        <button class="cat-tab-btn active" data-target="all">🌟 All Items</button>
+        <button class="cat-tab-btn" data-target="mandi">🍚 Kuzhi Mandi (Sizes)</button>
+        <button class="cat-tab-btn" data-target="grills">🍗 Arabian Grills</button>
+        <button class="cat-tab-btn" data-target="drinks">🥤 Soft Drinks & Coolers</button>
+        <button class="cat-tab-btn" data-target="sides">🥖 Sides & Breads</button>
+        <button class="cat-tab-btn" data-target="desserts">🍮 Desserts</button>
+      </div>
+    </nav>
+
+    <!-- Main Ordering Grid Layout: Products List + Cart Sidebar -->
+    <div class="order-main-layout">
+      
+      <!-- LEFT: Products Sections -->
+      <div class="products-catalog-column" id="productsCatalog">
+        
+        <!-- SECTION 1: KUZHI MANDI (With Quarter, Half, 3/4, Full Selectors) -->
+        <section class="category-section-block" id="cat-mandi" data-category="mandi">
+          <h2 class="category-heading">
+            <span class="cat-icon">🍚</span> Underground Kuzhi Mandi
+          </h2>
+          <div class="products-list">
+            
+            <!-- Item 1: Chicken Mandi -->
+            <article class="food-item-card" data-dish-id="chicken-mandi" data-name="Chicken Kuzhi Mandi" data-base-price="200" data-cat="mandi">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge non-veg" title="Non-Vegetarian"></span>
+                  <span class="food-tag-pill">Signature · Wood Fired</span>
+                </div>
+                <h3 class="food-title">Authentic Chicken Kuzhi Mandi</h3>
+                <p class="food-desc">Slow-steamed tender baby chicken cooked in underground earth pit with aromatic long-grain basmati rice and whole spices.</p>
+                
+                <!-- Portion Selector Pills (Full, 3/4, Half, Quarter) -->
+                <div class="portion-selector-group">
+                  <span class="portion-label">Select Portion:</span>
+                  <div class="portion-pills">
+                    <button class="portion-btn active" data-portion="Quarter" data-price="200">Quarter (₹200)</button>
+                    <button class="portion-btn" data-portion="Half" data-price="380">Half (₹380)</button>
+                    <button class="portion-btn" data-portion="3/4" data-price="560">3/4 (₹560)</button>
+                    <button class="portion-btn" data-portion="Full" data-price="720">Full (₹720)</button>
+                  </div>
+                </div>
+
+                <div class="food-price-row">
+                  <span class="food-price-current">₹200</span>
+                  <span class="food-price-original">₹250</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <!-- Uses user's main mandi.png if present -->
+                  <img src="main mandi.png" alt="Chicken Kuzhi Mandi" class="food-thumb-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                  <span class="food-thumb-fallback" style="display:none;">🍗</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addItemToCart('chicken-mandi')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Item 2: Mutton Mandi -->
+            <article class="food-item-card" data-dish-id="mutton-mandi" data-name="Mutton Kuzhi Mandi" data-base-price="350" data-cat="mandi">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge non-veg" title="Non-Vegetarian"></span>
+                  <span class="food-tag-pill">Pit Roasted Masterpiece</span>
+                </div>
+                <h3 class="food-title">Slow-Roasted Mutton Kuzhi Mandi</h3>
+                <p class="food-desc">Melt-in-mouth succulent baby mutton marinated in traditional Arabian herbs, cooked underground for over 4 hours.</p>
+                
+                <!-- Portion Selector Pills -->
+                <div class="portion-selector-group">
+                  <span class="portion-label">Select Portion:</span>
+                  <div class="portion-pills">
+                    <button class="portion-btn active" data-portion="Quarter" data-price="350">Quarter (₹350)</button>
+                    <button class="portion-btn" data-portion="Half" data-price="650">Half (₹650)</button>
+                    <button class="portion-btn" data-portion="3/4" data-price="950">3/4 (₹950)</button>
+                    <button class="portion-btn" data-portion="Full" data-price="1250">Full (₹1,250)</button>
+                  </div>
+                </div>
+
+                <div class="food-price-row">
+                  <span class="food-price-current">₹350</span>
+                  <span class="food-price-original">₹420</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <img src="mutton mandi.png" alt="Mutton Kuzhi Mandi" class="food-thumb-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                  <span class="food-thumb-fallback" style="display:none;">🍖</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addItemToCart('mutton-mandi')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Item 3: Beef Mandi -->
+            <article class="food-item-card" data-dish-id="beef-mandi" data-name="Beef Kuzhi Mandi" data-base-price="280" data-cat="mandi">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge non-veg" title="Non-Vegetarian"></span>
+                  <span class="food-tag-pill">Smoky & Rich</span>
+                </div>
+                <h3 class="food-title">Spiced Beef Kuzhi Mandi</h3>
+                <p class="food-desc">Tender juicy beef cuts infused with roasted coriander, cardamom, and the deep aroma of natural charcoal embers.</p>
+                
+                <!-- Portion Selector Pills -->
+                <div class="portion-selector-group">
+                  <span class="portion-label">Select Portion:</span>
+                  <div class="portion-pills">
+                    <button class="portion-btn active" data-portion="Quarter" data-price="280">Quarter (₹280)</button>
+                    <button class="portion-btn" data-portion="Half" data-price="520">Half (₹520)</button>
+                    <button class="portion-btn" data-portion="3/4" data-price="760">3/4 (₹760)</button>
+                    <button class="portion-btn" data-portion="Full" data-price="980">Full (₹980)</button>
+                  </div>
+                </div>
+
+                <div class="food-price-row">
+                  <span class="food-price-current">₹280</span>
+                  <span class="food-price-original">₹340</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🥩</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addItemToCart('beef-mandi')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Item 4: Peri-Peri Chicken Mandi -->
+            <article class="food-item-card" data-dish-id="periperi-mandi" data-name="Peri-Peri Chicken Mandi" data-base-price="220" data-cat="mandi">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge non-veg" title="Non-Vegetarian"></span>
+                  <span class="food-tag-pill">Spicy Special</span>
+                </div>
+                <h3 class="food-title">Fiery Peri-Peri Chicken Mandi</h3>
+                <p class="food-desc">Spicy marinated chicken glazed with crushed African bird's eye chili and pit roasted for spice enthusiasts.</p>
+                
+                <!-- Portion Selector Pills -->
+                <div class="portion-selector-group">
+                  <span class="portion-label">Select Portion:</span>
+                  <div class="portion-pills">
+                    <button class="portion-btn active" data-portion="Quarter" data-price="220">Quarter (₹220)</button>
+                    <button class="portion-btn" data-portion="Half" data-price="420">Half (₹420)</button>
+                    <button class="portion-btn" data-portion="3/4" data-price="620">3/4 (₹620)</button>
+                    <button class="portion-btn" data-portion="Full" data-price="800">Full (₹800)</button>
+                  </div>
+                </div>
+
+                <div class="food-price-row">
+                  <span class="food-price-current">₹220</span>
+                  <span class="food-price-original">₹270</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🌶️</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addItemToCart('periperi-mandi')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Item 5: Grand Family Feast Platter -->
+            <article class="food-item-card" data-dish-id="family-feast" data-name="Grand Family Feast Platter" data-base-price="1899" data-cat="mandi">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge non-veg" title="Non-Vegetarian"></span>
+                  <span class="food-tag-pill">Serves 4 - 5 People</span>
+                </div>
+                <h3 class="food-title">Al Mashi Grand Family Platter</h3>
+                <p class="food-desc">Full Chicken Mandi + Half Mutton Mandi + Extra fragrant Rice + 4 Kuboos + Garlic Dip + Arabian Salata + 2 Chilled Soft Drinks.</p>
+                <div class="food-price-row">
+                  <span class="food-price-current">₹1,899</span>
+                  <span class="food-price-original">₹2,499</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <!-- Uses user's Golden Whole Chicken Platter if present -->
+                  <img src="Golden_Whole_Chicken_Mandi_Platter-removebg-preview.png" alt="Grand Family Feast" class="food-thumb-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                  <span class="food-thumb-fallback" style="display:none;">👑</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addFixedItemToCart('family-feast', 'Grand Family Feast Platter', 1899, 'Grand Combo (Serves 4-5)')">+ ADD</button>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- SECTION 2: SOFT DRINKS & REFRESHMENTS (Pepsi, Coca-Cola, 7 Up) -->
+        <section class="category-section-block" id="cat-drinks" data-category="drinks">
+          <h2 class="category-heading">
+            <span class="cat-icon">🥤</span> Chilled Soft Drinks & Coolers
+          </h2>
+          <div class="products-list">
+
+            <!-- Item: Pepsi Can -->
+            <article class="food-item-card" data-dish-id="pepsi-can" data-name="Pepsi (Chilled Can 330ml)" data-base-price="40" data-cat="drinks">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge veg" title="Vegetarian"></span>
+                  <span class="food-tag-pill">Chilled Can</span>
+                </div>
+                <h3 class="food-title">Pepsi (330ml Can)</h3>
+                <p class="food-desc">Ice-cold refreshing Pepsi can — the quintessential companion to smoky hot Mandi.</p>
+                <div class="food-price-row">
+                  <span class="food-price-current">₹40</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🥤</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addFixedItemToCart('pepsi-can', 'Pepsi (330ml Can)', 40, 'Chilled Can')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Item: Pepsi 750ml Bottle -->
+            <article class="food-item-card" data-dish-id="pepsi-bottle" data-name="Pepsi (750ml Bottle)" data-base-price="60" data-cat="drinks">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge veg" title="Vegetarian"></span>
+                  <span class="food-tag-pill">Sharing Bottle</span>
+                </div>
+                <h3 class="food-title">Pepsi (750ml Bottle)</h3>
+                <p class="food-desc">Chilled 750ml pet bottle, ideal for sharing with family and friends.</p>
+                <div class="food-price-row">
+                  <span class="food-price-current">₹60</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🍾</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addFixedItemToCart('pepsi-bottle', 'Pepsi (750ml Bottle)', 60, '750ml Bottle')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Item: Coca-Cola Can -->
+            <article class="food-item-card" data-dish-id="coke-can" data-name="Coca-Cola (Chilled Can 330ml)" data-base-price="40" data-cat="drinks">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge veg" title="Vegetarian"></span>
+                  <span class="food-tag-pill">Chilled Can</span>
+                </div>
+                <h3 class="food-title">Coca-Cola (330ml Can)</h3>
+                <p class="food-desc">Classic crisp Coca-Cola served chilled for maximum carbonated satisfaction.</p>
+                <div class="food-price-row">
+                  <span class="food-price-current">₹40</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🥤</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addFixedItemToCart('coke-can', 'Coca-Cola (330ml Can)', 40, 'Chilled Can')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Item: Coca-Cola 750ml Bottle -->
+            <article class="food-item-card" data-dish-id="coke-bottle" data-name="Coca-Cola (750ml Bottle)" data-base-price="60" data-cat="drinks">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge veg" title="Vegetarian"></span>
+                  <span class="food-tag-pill">Sharing Bottle</span>
+                </div>
+                <h3 class="food-title">Coca-Cola (750ml Bottle)</h3>
+                <p class="food-desc">Large 750ml chilled bottle for parties and family dining.</p>
+                <div class="food-price-row">
+                  <span class="food-price-current">₹60</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🍾</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addFixedItemToCart('coke-bottle', 'Coca-Cola (750ml Bottle)', 60, '750ml Bottle')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Item: 7 Up Can -->
+            <article class="food-item-card" data-dish-id="sevenup-can" data-name="7 Up (Chilled Can 330ml)" data-base-price="40" data-cat="drinks">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge veg" title="Vegetarian"></span>
+                  <span class="food-tag-pill">Citrus Refreshment</span>
+                </div>
+                <h3 class="food-title">7 Up (330ml Can)</h3>
+                <p class="food-desc">Crisp, bubbly lemon-lime chilled soda that cleanses the palate between rich bites of meat.</p>
+                <div class="food-price-row">
+                  <span class="food-price-current">₹40</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🍋</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addFixedItemToCart('sevenup-can', '7 Up (330ml Can)', 40, 'Chilled Can')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Item: 7 Up 750ml Bottle -->
+            <article class="food-item-card" data-dish-id="sevenup-bottle" data-name="7 Up (750ml Bottle)" data-base-price="60" data-cat="drinks">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge veg" title="Vegetarian"></span>
+                  <span class="food-tag-pill">Sharing Bottle</span>
+                </div>
+                <h3 class="food-title">7 Up (750ml Bottle)</h3>
+                <p class="food-desc">Refreshing lemon-lime fizzy soda in a family-sized 750ml chilled bottle.</p>
+                <div class="food-price-row">
+                  <span class="food-price-current">₹60</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🍾</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addFixedItemToCart('sevenup-bottle', '7 Up (750ml Bottle)', 60, '750ml Bottle')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Item: Malabar Mint Sulaimani -->
+            <article class="food-item-card" data-dish-id="sulaimani" data-name="Malabar Mint Sulaimani Tea" data-base-price="40" data-cat="drinks">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge veg" title="Vegetarian"></span>
+                  <span class="food-tag-pill">Traditional Brew</span>
+                </div>
+                <h3 class="food-title">Malabar Mint Sulaimani Tea</h3>
+                <p class="food-desc">Traditional spiced black tea brewed with crushed cardamom, cinnamon bark, and garden mint.</p>
+                <div class="food-price-row">
+                  <span class="food-price-current">₹40</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">☕</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addFixedItemToCart('sulaimani', 'Malabar Mint Sulaimani Tea', 40, 'Hot Spiced Brew')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Item: Mint Lime Cooler -->
+            <article class="food-item-card" data-dish-id="mint-lime" data-name="Fresh Mint Lime Cooler" data-base-price="70" data-cat="drinks">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge veg" title="Vegetarian"></span>
+                  <span class="food-tag-pill">Fresh Pressed</span>
+                </div>
+                <h3 class="food-title">Fresh Mint Lime Cooler</h3>
+                <p class="food-desc">Zesty freshly pressed lemon juice blended with garden mint leaves and crushed crystal ice.</p>
+                <div class="food-price-row">
+                  <span class="food-price-current">₹70</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🍹</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addFixedItemToCart('mint-lime', 'Fresh Mint Lime Cooler', 70, 'Chilled Cooler')">+ ADD</button>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- SECTION 3: ARABIAN GRILLS & AL FAHAM -->
+        <section class="category-section-block" id="cat-grills" data-category="grills">
+          <h2 class="category-heading">
+            <span class="cat-icon">🍗</span> Arabian Charcoal Grills & Al Faham
+          </h2>
+          <div class="products-list">
+            
+            <!-- Item: Pepper Al Faham -->
+            <article class="food-item-card" data-dish-id="pepper-alfaham" data-name="Signature Pepper Al Faham" data-base-price="130" data-cat="grills">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge non-veg" title="Non-Vegetarian"></span>
+                  <span class="food-tag-pill">Charcoal Grilled</span>
+                </div>
+                <h3 class="food-title">Signature Pepper Al Faham Chicken</h3>
+                <p class="food-desc">Tender chicken slow-grilled over natural charcoal, seasoned with Malabar black pepper and yogurt dip.</p>
+                
+                <div class="portion-selector-group">
+                  <span class="portion-label">Select Portion:</span>
+                  <div class="portion-pills">
+                    <button class="portion-btn active" data-portion="Quarter" data-price="130">Quarter (₹130)</button>
+                    <button class="portion-btn" data-portion="Half" data-price="240">Half (₹240)</button>
+                    <button class="portion-btn" data-portion="Full" data-price="460">Full (₹460)</button>
+                  </div>
+                </div>
+
+                <div class="food-price-row">
+                  <span class="food-price-current">₹130</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🍗</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addItemToCart('pepper-alfaham')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Item: Mixed Charcoal Grill Platter -->
+            <article class="food-item-card" data-dish-id="mixed-grill" data-name="Arabian Mixed Grill Platter" data-base-price="890" data-cat="grills">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge non-veg" title="Non-Vegetarian"></span>
+                  <span class="food-tag-pill">Chef's Platter</span>
+                </div>
+                <h3 class="food-title">Arabian Mixed Charcoal Grill Platter</h3>
+                <p class="food-desc">Assortment of lamb seekh kebabs, chicken tikka skewers, pepper al faham cuts, 3 kuboos, and garlic dip.</p>
+                <div class="food-price-row">
+                  <span class="food-price-current">₹890</span>
+                  <span class="food-price-original">₹1,199</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🍢</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addFixedItemToCart('mixed-grill', 'Arabian Mixed Grill Platter', 890, 'Full Platter')">+ ADD</button>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- SECTION 4: SIDES & BREADS -->
+        <section class="category-section-block" id="cat-sides" data-category="sides">
+          <h2 class="category-heading">
+            <span class="cat-icon">🥖</span> Accompaniments & Breads
+          </h2>
+          <div class="products-list">
+
+            <!-- Extra Mandi Rice -->
+            <article class="food-item-card" data-dish-id="extra-rice" data-name="Extra Mandi Rice" data-base-price="80" data-cat="sides">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge non-veg" title="Non-Veg Infused"></span>
+                  <span class="food-tag-pill">Pit Broth Infused</span>
+                </div>
+                <h3 class="food-title">Extra Pit-Broth Mandi Rice</h3>
+                <p class="food-desc">Steaming portion of wood-fired long-grain basmati rice infused with slow-simmered pit meat broth.</p>
+                
+                <div class="portion-selector-group">
+                  <span class="portion-label">Select Portion:</span>
+                  <div class="portion-pills">
+                    <button class="portion-btn active" data-portion="Quarter Plate" data-price="80">Half Plate (₹80)</button>
+                    <button class="portion-btn" data-portion="Full Plate" data-price="150">Full Plate (₹150)</button>
+                  </div>
+                </div>
+
+                <div class="food-price-row">
+                  <span class="food-price-current">₹80</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🍚</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addItemToCart('extra-rice')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Garlic Toum Sauce -->
+            <article class="food-item-card" data-dish-id="garlic-toum" data-name="Classic Garlic Toum Sauce" data-base-price="40" data-cat="sides">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge veg" title="Vegetarian"></span>
+                  <span class="food-tag-pill">Whipped Fresh</span>
+                </div>
+                <h3 class="food-title">Signature Garlic Toum Sauce (Extra Dip)</h3>
+                <p class="food-desc">Traditional creamy whipped garlic emulsion prepared with cold-pressed oil and fresh garlic cloves.</p>
+                <div class="food-price-row">
+                  <span class="food-price-current">₹40</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🧄</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addFixedItemToCart('garlic-toum', 'Signature Garlic Toum Sauce', 40, 'Extra Dip')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Fresh Kuboos -->
+            <article class="food-item-card" data-dish-id="fresh-kuboos" data-name="Fresh Kuboos (Set of 3)" data-base-price="30" data-cat="sides">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge veg" title="Vegetarian"></span>
+                  <span class="food-tag-pill">Oven Baked</span>
+                </div>
+                <h3 class="food-title">Fresh Baked Kuboos (Set of 3)</h3>
+                <p class="food-desc">Pillowy soft Arabian flatbreads baked fresh on order.</p>
+                <div class="food-price-row">
+                  <span class="food-price-current">₹30</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🫓</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addFixedItemToCart('fresh-kuboos', 'Fresh Baked Kuboos (Set of 3)', 30, 'Set of 3')">+ ADD</button>
+              </div>
+            </article>
+
+            <!-- Arabian Tomato Salata -->
+            <article class="food-item-card" data-dish-id="spicy-salata" data-name="Spicy Arabian Tomato Salata" data-base-price="30" data-cat="sides">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge veg" title="Vegetarian"></span>
+                  <span class="food-tag-pill">Spicy Chutney</span>
+                </div>
+                <h3 class="food-title">Spicy Arabian Tomato Salata (Salata Hara)</h3>
+                <p class="food-desc">Crushed vine-ripened tomatoes, green chilies, cilantro, and lemon juice — the essential tangy Mandi dip.</p>
+                <div class="food-price-row">
+                  <span class="food-price-current">₹30</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🍅</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addFixedItemToCart('spicy-salata', 'Spicy Arabian Tomato Salata', 30, 'Extra Chutney')">+ ADD</button>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- SECTION 5: ARABIAN DESSERTS -->
+        <section class="category-section-block" id="cat-desserts" data-category="desserts">
+          <h2 class="category-heading">
+            <span class="cat-icon">🍮</span> Traditional Arabian Desserts
+          </h2>
+          <div class="products-list">
+
+            <!-- Royal Kunafa -->
+            <article class="food-item-card" data-dish-id="royal-kunafa" data-name="Royal Turkish Cheese Kunafa" data-base-price="260" data-cat="desserts">
+              <div class="food-info">
+                <div class="food-meta-row">
+                  <span class="type-badge veg" title="Vegetarian"></span>
+                  <span class="food-tag-pill">Fresh Baked</span>
+                </div>
+                <h3 class="food-title">Royal Turkish Cheese Kunafa</h3>
+                <p class="food-desc">Crisp golden spun pastry crust filled with melted sweet Akkawi cheese, soaked in orange-blossom sugar syrup and crushed pistachios.</p>
+                <div class="food-price-row">
+                  <span class="food-price-current">₹260</span>
+                </div>
+              </div>
+              <div class="food-action-area">
+                <div class="food-img-thumb">
+                  <span class="food-thumb-fallback">🥮</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addFixedItemToCart('royal-kunafa', 'Royal Turkish Cheese Kunafa', 260, 'Single Serving')">+ ADD</button>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT: STICKY DESKTOP CART SIDEBAR -->
+      <aside class="cart-sidebar" id="cartSidebar" aria-label="Order Cart">
+        <div class="cart-header">
+          <h2 class="cart-title">
+            <span>🛒</span> Your Order
+          </h2>
+          <span class="cart-item-count-text" id="cartItemCountText">0 Items</span>
+        </div>
+
+        <!-- Scrollable Cart Items -->
+        <div class="cart-items-scroll" id="cartItemsContainer">
+          <!-- Populated by JavaScript -->
+          <div class="cart-empty-state" id="cartEmptyState">
+            <span class="cart-empty-icon">🍚</span>
+            <p><strong>Your cart is currently empty</strong></p>
+            <p style="font-size:12px;">Select your preferred Mandi portions & soft drinks to get started.</p>
+          </div>
+        </div>
+
+        <!-- Cart Summary & Bill Breakdown -->
+        <div class="cart-summary" id="cartSummary">
+          <div class="summary-line">
+            <span>Item Subtotal</span>
+            <span id="billSubtotal">₹0</span>
+          </div>
+          <div class="summary-line">
+            <span>Restaurant Packaging</span>
+            <span id="billPackaging">₹20</span>
+          </div>
+          <div class="summary-line">
+            <span>Delivery Fee</span>
+            <span id="billDelivery">₹30</span>
+          </div>
+          <div class="summary-line total-line">
+            <span>Total Payable</span>
+            <span class="grand-price" id="billGrandTotal">₹0</span>
+          </div>
+
+          <button class="btn-checkout-proceed" id="btnProceedCheckout" disabled onclick="openCheckoutModal()">
+            <span>Proceed to Checkout</span>
+            <span>→</span>
+          </button>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- =====================================================================
+       MOBILE FLOATING CART BAR (Displays when items in cart)
+       ===================================================================== -->
+  <div class="mobile-cart-bar" id="mobileCartBar" onclick="openCheckoutModal()" role="button" aria-label="Open Cart Checkout">
+    <div class="mobile-cart-info">
+      <span class="mobile-cart-items-text" id="mobileCartCountText">0 ITEMS SELECTED</span>
+      <span class="mobile-cart-price" id="mobileCartPrice">₹0</span>
+    </div>
+    <div class="mobile-cart-action">
+      <span>Order on WhatsApp</span>
+      <span>→</span>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       CUSTOMER ADDRESS & DETAILS MODAL
+       ===================================================================== -->
+  <div class="checkout-modal-overlay" id="checkoutModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="checkout-modal-card">
+      <button class="modal-close-btn" onclick="closeCheckoutModal()" aria-label="Close Checkout Modal">✕</button>
+      
+      <h3 class="modal-title" id="modalTitle">Delivery & Order Details</h3>
+      <p class="modal-subtitle">Enter your delivery address to send this order directly to our WhatsApp kitchen!</p>
+
+      <form class="checkout-form" id="checkoutForm" onsubmit="handleWhatsAppCheckout(event)">
+        
+        <!-- Order Type Selection -->
+        <div class="form-group">
+          <label class="form-label">Order Type</label>
+          <div class="order-type-tabs">
+            <label class="type-radio-label active" id="tabDelivery">
+              <input type="radio" name="orderType" value="Home Delivery" checked onchange="toggleOrderType('Home Delivery')" />
+              🛵 Home Delivery
+            </label>
+            <label class="type-radio-label" id="tabTakeaway">
+              <input type="radio" name="orderType" value="Takeaway (Pickup)" onchange="toggleOrderType('Takeaway (Pickup)')" />
+              🛍️ Takeaway / Pickup
+            </label>
+          </div>
+        </div>
+
+        <!-- Customer Name & Phone -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="custName" class="form-label">Full Name *</label>
+            <input type="text" id="custName" class="form-input" placeholder="e.g. Akshaya" required />
+          </div>
+          <div class="form-group">
+            <label for="custPhone" class="form-label">WhatsApp Number *</label>
+            <input type="tel" id="custPhone" class="form-input" placeholder="e.g. 9876543210" pattern="[0-9]{10,12}" required />
+          </div>
+        </div>
+
+        <!-- Address Fields (Hidden if Takeaway) -->
+        <div class="form-group" id="addressFieldGroup">
+          <label for="custAddress" class="form-label">Delivery Address *</label>
+          <textarea id="custAddress" class="form-textarea" rows="2" placeholder="House / Flat No., Building Name, Street / Road, Ponnani" required></textarea>
+        </div>
+
+        <div class="form-row" id="landmarkFieldGroup">
+          <div class="form-group">
+            <label for="custLandmark" class="form-label">Nearby Landmark</label>
+            <input type="text" id="custLandmark" class="form-input" placeholder="e.g. Near Juma Masjid / Beach" />
+          </div>
+          <div class="form-group">
+            <label for="custPayment" class="form-label">Payment Mode</label>
+            <select id="custPayment" class="form-select">
+              <option value="UPI (GPay / PhonePe on Delivery)">UPI (GPay / PhonePe on Delivery)</option>
+              <option value="Cash on Delivery (COD)">Cash on Delivery (COD)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Special Instructions -->
+        <div class="form-group">
+          <label for="custNotes" class="form-label">Special Cooking / Delivery Notes</label>
+          <input type="text" id="custNotes" class="form-input" placeholder="e.g. Extra spicy salata, mild rice, call on arrival" />
+        </div>
+
+        <!-- Order Summary Snapshot -->
+        <div class="modal-order-summary">
+          <div>
+            <span id="modalSummaryCount">0 items in order</span><br />
+            <small style="color:var(--text-dim);">Estimated time: 30-40 mins</small>
+          </div>
+          <div class="modal-summary-total" id="modalSummaryTotal">₹0</div>
+        </div>
+
+        <!-- WhatsApp Checkout Action -->
+        <button type="submit" class="btn-whatsapp-order">
+          <svg class="whatsapp-icon-svg" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.178L2 22l4.981-1.309A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18.063c-1.639 0-3.155-.494-4.417-1.341l-.317-.213-2.946.773.786-2.872-.234-.372A8.026 8.026 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8.063-8 8.063z"/>
+          </svg>
+          <span>Send Order on WhatsApp</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       ⚙️ VANILLA JAVASCRIPT ORDERING LOGIC
+       ===================================================================== -->
+  <script>
+    /* =====================================================================
+       RESTAURANT WHATSAPP NUMBER CONFIGURATION
+       (Replace with your real shop number in international format, e.g. 919876543210)
+       ===================================================================== */
+    const RESTAURANT_WHATSAPP_NUMBER = "910000000000";
+
+    // Application State
+    let cart = [];
+    let activeCategory = 'all';
+    let currentOrderType = 'Home Delivery';
+    const PACKAGING_FEE = 20;
+    const DELIVERY_FEE = 30;
+
+    // Load saved cart from localStorage if exists
+    try {
+      const savedCart = localStorage.getItem('almashi_cart');
+      if (savedCart) {
+        cart = JSON.parse(savedCart);
+      }
+    } catch(e) {
+      cart = [];
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initPortionSelectors();
+      initCategoryTabs();
+      initSearch();
+      renderCart();
+    });
+
+    /* 1. Setup Mandi & Meat Portion Selector Buttons */
+    function initPortionSelectors() {
+      const portionPills = document.querySelectorAll('.portion-pills');
+      portionPills.forEach(group => {
+        const buttons = group.querySelectorAll('.portion-btn');
+        buttons.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const card = btn.closest('.food-item-card');
+            const newPrice = btn.getAttribute('data-price');
+            const priceEl = card.querySelector('.food-price-current');
+            if (priceEl && newPrice) {
+              priceEl.textContent = `₹${newPrice}`;
+            }
+          });
+        });
+      });
+    }
+
+    /* 2. Add Item With Selected Portion to Cart (For Mandi & Multi-Portion Dishes) */
+    function addItemToCart(dishId) {
+      const card = document.querySelector(`.food-item-card[data-dish-id="${dishId}"]`);
+      if (!card) return;
+
+      const dishName = card.getAttribute('data-name');
+      const activePortionBtn = card.querySelector('.portion-btn.active');
+      const portionName = activePortionBtn ? activePortionBtn.getAttribute('data-portion') : 'Standard';
+      const price = activePortionBtn ? parseInt(activePortionBtn.getAttribute('data-price'), 10) : parseInt(card.getAttribute('data-base-price'), 10);
+
+      // Unique Cart Item Identifier based on Dish ID + Portion
+      const cartItemId = `${dishId}_${portionName}`;
+
+      const existingItem = cart.find(item => item.id === cartItemId);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          id: cartItemId,
+          dishId: dishId,
+          name: dishName,
+          portion: portionName,
+          price: price,
+          quantity: 1
+        });
+      }
+
+      saveAndRenderCart();
+      showToast(`${dishName} (${portionName}) added to cart!`);
+    }
+
+    /* 3. Add Fixed Single-Size Item to Cart (Beverages, Sides, Combos) */
+    function addFixedItemToCart(dishId, name, price, portion) {
+      const cartItemId = `${dishId}_${portion}`;
+      const existingItem = cart.find(item => item.id === cartItemId);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          id: cartItemId,
+          dishId: dishId,
+          name: name,
+          portion: portion,
+          price: price,
+          quantity: 1
+        });
+      }
+
+      saveAndRenderCart();
+      showToast(`${name} added to cart!`);
+    }
+
+    /* 4. Update Item Quantity in Cart */
+    function updateCartItemQty(cartItemId, delta) {
+      const itemIndex = cart.findIndex(item => item.id === cartItemId);
+      if (itemIndex === -1) return;
+
+      cart[itemIndex].quantity += delta;
+      if (cart[itemIndex].quantity <= 0) {
+        cart.splice(itemIndex, 1);
+      }
+
+      saveAndRenderCart();
+    }
+
+    /* 5. Save & Render Cart Updates */
+    function saveAndRenderCart() {
+      try {
+        localStorage.setItem('almashi_cart', JSON.stringify(cart));
+      } catch (e) {}
+      renderCart();
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItemsContainer');
+      const emptyState = document.getElementById('cartEmptyState');
+      const itemCountText = document.getElementById('cartItemCountText');
+      const headerCartBadge = document.getElementById('headerCartBadge');
+      const headerCartTotal = document.getElementById('headerCartTotal');
+      const billSubtotal = document.getElementById('billSubtotal');
+      const billPackaging = document.getElementById('billPackaging');
+      const billDelivery = document.getElementById('billDelivery');
+      const billGrandTotal = document.getElementById('billGrandTotal');
+      const btnProceedCheckout = document.getElementById('btnProceedCheckout');
+      
+      const mobileCartBar = document.getElementById('mobileCartBar');
+      const mobileCartCountText = document.getElementById('mobileCartCountText');
+      const mobileCartPrice = document.getElementById('mobileCartPrice');
+
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      
+      // Calculate delivery fee (free if subtotal > 1000 or takeaway)
+      const deliveryFee = (currentOrderType === 'Takeaway (Pickup)' || subtotal === 0) ? 0 : DELIVERY_FEE;
+      const packagingFee = subtotal === 0 ? 0 : PACKAGING_FEE;
+      const grandTotal = subtotal === 0 ? 0 : (subtotal + packagingFee + deliveryFee);
+
+      // Update header indicators
+      headerCartBadge.textContent = totalItems;
+      headerCartTotal.textContent = `₹${subtotal}`;
+      itemCountText.textContent = `${totalItems} ${totalItems === 1 ? 'Item' : 'Items'}`;
+
+      // Update bill summary
+      billSubtotal.textContent = `₹${subtotal}`;
+      billPackaging.textContent = `₹${packagingFee}`;
+      billDelivery.textContent = deliveryFee === 0 ? 'FREE' : `₹${deliveryFee}`;
+      billGrandTotal.textContent = `₹${grandTotal}`;
+
+      // Update mobile floating bar
+      if (totalItems > 0) {
+        mobileCartBar.style.display = 'flex';
+        mobileCartCountText.textContent = `${totalItems} ${totalItems === 1 ? 'ITEM' : 'ITEMS'} ADDED`;
+        mobileCartPrice.textContent = `₹${grandTotal}`;
+      } else {
+        mobileCartBar.style.display = 'none';
+      }
+
+      // Toggle checkout button state
+      btnProceedCheckout.disabled = totalItems === 0;
+
+      // Render cart rows
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="cart-empty-state">
+            <span class="cart-empty-icon">🍚</span>
+            <p><strong>Your cart is currently empty</strong></p>
+            <p style="font-size:12px;">Select your preferred Mandi portions & soft drinks to get started.</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      cart.forEach(item => {
+        const itemLineTotal = item.price * item.quantity;
+        html += `
+          <div class="cart-row">
+            <div class="cart-row-info">
+              <span class="cart-row-title">${item.name}</span>
+              <span class="cart-row-portion">${item.portion} · ₹${item.price}</span>
+            </div>
+            <div class="cart-row-stepper">
+              <button class="cart-step-btn" onclick="updateCartItemQty('${item.id}', -1)" aria-label="Decrease quantity">−</button>
+              <span class="cart-step-val">${item.quantity}</span>
+              <button class="cart-step-btn" onclick="updateCartItemQty('${item.id}', 1)" aria-label="Increase quantity">+</button>
+            </div>
+            <span class="cart-row-price">₹${itemLineTotal}</span>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    /* 6. Category Filter Tabs Navigation */
+    function initCategoryTabs() {
+      const tabBtns = document.querySelectorAll('.cat-tab-btn');
+      const sections = document.querySelectorAll('.category-section-block');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const target = btn.getAttribute('data-target');
+          activeCategory = target;
+
+          sections.forEach(sec => {
+            const secCat = sec.getAttribute('data-category');
+            if (target === 'all' || secCat === target) {
+              sec.style.display = 'block';
+            } else {
+              sec.style.display = 'none';
+            }
+          });
+
+          // Scroll smoothly to section if a specific category was clicked
+          if (target !== 'all') {
+            const el = document.getElementById(`cat-${target}`);
+            if (el) {
+              const yOffset = -140;
+              const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }
+        });
+      });
+    }
+
+    /* 7. Live Real-time Dish Search */
+    function initSearch() {
+      const searchInput = document.getElementById('dishSearchInput');
+      const foodCards = document.querySelectorAll('.food-item-card');
+
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+
+        foodCards.forEach(card => {
+          const name = (card.getAttribute('data-name') || '').toLowerCase();
+          const desc = card.querySelector('.food-desc')?.textContent.toLowerCase() || '';
+          
+          if (name.includes(query) || desc.includes(query)) {
+            card.style.display = 'grid';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    }
+
+    /* 8. Checkout Modal Handlers */
+    function openCheckoutModal() {
+      if (cart.length === 0) {
+        alert('Please add at least one dish to your cart before proceeding!');
+        return;
+      }
+
+      const modal = document.getElementById('checkoutModalOverlay');
+      const modalSummaryCount = document.getElementById('modalSummaryCount');
+      const modalSummaryTotal = document.getElementById('modalSummaryTotal');
+
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const deliveryFee = (currentOrderType === 'Takeaway (Pickup)') ? 0 : DELIVERY_FEE;
+      const grandTotal = subtotal + PACKAGING_FEE + deliveryFee;
+
+      modalSummaryCount.textContent = `${totalItems} ${totalItems === 1 ? 'item' : 'items'} in order`;
+      modalSummaryTotal.textContent = `₹${grandTotal}`;
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCheckoutModal() {
+      const modal = document.getElementById('checkoutModalOverlay');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Toggle Delivery vs Takeaway in Checkout Form
+    function toggleOrderType(type) {
+      currentOrderType = type;
+      const tabDelivery = document.getElementById('tabDelivery');
+      const tabTakeaway = document.getElementById('tabTakeaway');
+      const addressGroup = document.getElementById('addressFieldGroup');
+      const landmarkGroup = document.getElementById('landmarkFieldGroup');
+      const custAddress = document.getElementById('custAddress');
+
+      if (type === 'Home Delivery') {
+        tabDelivery.classList.add('active');
+        tabTakeaway.classList.remove('active');
+        addressGroup.style.display = 'flex';
+        landmarkGroup.style.display = 'grid';
+        custAddress.required = true;
+      } else {
+        tabTakeaway.classList.add('active');
+        tabDelivery.classList.remove('active');
+        addressGroup.style.display = 'none';
+        landmarkGroup.style.display = 'none';
+        custAddress.required = false;
+      }
+
+      renderCart();
+      const modalSummaryTotal = document.getElementById('modalSummaryTotal');
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const deliveryFee = (currentOrderType === 'Takeaway (Pickup)') ? 0 : DELIVERY_FEE;
+      modalSummaryTotal.textContent = `₹${subtotal + PACKAGING_FEE + deliveryFee}`;
+    }
+
+    /* 9. Compiles Complete Order & Customer Details into a Clean WhatsApp Format */
+    function handleWhatsAppCheckout(e) {
+      e.preventDefault();
+
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const address = document.getElementById('custAddress').value.trim();
+      const landmark = document.getElementById('custLandmark').value.trim();
+      const paymentMode = document.getElementById('custPayment').value;
+      const notes = document.getElementById('custNotes').value.trim();
+
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const deliveryFee = (currentOrderType === 'Takeaway (Pickup)') ? 0 : DELIVERY_FEE;
+      const packagingFee = PACKAGING_FEE;
+      const grandTotal = subtotal + packagingFee + deliveryFee;
+
+      // Construct beautifully formatted WhatsApp Message
+      let msg = `===============================\n`;
+      msg += `🍽️ *NEW ORDER — AL MASHI MANDI* 🍽️\n`;
+      msg += `===============================\n\n`;
+
+      msg += `📋 *ORDER ITEMS:*\n`;
+      msg += `----------------------------------\n`;
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        msg += `${index + 1}️⃣ *${item.name} (${item.portion})*\n`;
+        msg += `   • Quantity: ${item.quantity}  |  Price: ₹${itemTotal}\n`;
+      });
+
+      msg += `----------------------------------\n`;
+      msg += `💵 *Item Subtotal:* ₹${subtotal}\n`;
+      msg += `📦 *Packaging Fee:* ₹${packagingFee}\n`;
+      msg += `🛵 *Delivery Charge:* ${deliveryFee === 0 ? 'FREE' : '₹' + deliveryFee}\n`;
+      msg += `💰 *GRAND TOTAL: ₹${grandTotal}*\n`;
+      msg += `----------------------------------\n\n`;
+
+      msg += `📍 *CUSTOMER & ORDER DETAILS:*\n`;
+      msg += `• *Customer Name:* ${name}\n`;
+      msg += `• *Phone:* ${phone}\n`;
+      msg += `• *Order Type:* ${currentOrderType}\n`;
+
+      if (currentOrderType === 'Home Delivery') {
+        msg += `• *Delivery Address:* ${address}\n`;
+        if (landmark) {
+          msg += `• *Landmark:* ${landmark}\n`;
+        }
+      } else {
+        msg += `• *Pickup Point:* Al Mashi Mandi, Main Road, Ponnani\n`;
+      }
+
+      msg += `• *Payment Preference:* ${paymentMode}\n`;
+
+      if (notes) {
+        msg += `• *Special Instructions:* ${notes}\n`;
+      }
+
+      msg += `\n===============================\n`;
+      msg += `_Sent via Al Mashi Mandi Online Ordering Portal_`;
+
+      // Encode URL for WhatsApp
+      const encodedMsg = encodeURIComponent(msg);
+      const whatsappUrl = `https://wa.me/${RESTAURANT_WHATSAPP_NUMBER}?text=${encodedMsg}`;
+
+      // Open WhatsApp in new tab
+      window.open(whatsappUrl, '_blank');
+
+      // Clear cart after sending and close modal
+      closeCheckoutModal();
+      cart = [];
+      saveAndRenderCart();
+
+      alert('Thank you! Your order details have been prepared and sent to Al Mashi Mandi on WhatsApp. Our team will confirm your order immediately.');
+    }
+
+    /* Small Toast Notification Helper */
+    function showToast(msg) {
+      let toast = document.getElementById('orderToast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'orderToast';
+        toast.style.cssText = `
+          position: fixed;
+          top: 80px;
+          right: 20px;
+          background: #C9A227;
+          color: #03160F;
+          padding: 12px 20px;
+          border-radius: 8px;
+          font-weight: 700;
+          font-size: 13.5px;
+          z-index: 300;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          pointer-events: none;
+        `;
+        document.body.appendChild(toast);
+      }
+      toast.textContent = msg;
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateY(0)';
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(-10px)';
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

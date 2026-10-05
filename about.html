@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us & Our Heritage — Al Mashi Mandi | Ponnani, Kerala</title>
+  <meta name="description" content="Discover the story of Al Mashi Mandi in Ponnani, Kerala. Learn about our authentic underground pit (kuzhi) cooking method, natural wood embers, and 30-year culinary heritage." />
+
+  <!-- Google Fonts CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --green-950: #03160F;
+      --green-900: #062B1F;
+      --green-800: #0B3D2E;
+      --green-700: #0F4A38;
+      --gold: #C9A227;
+      --gold-light: #E4C55A;
+      --cream: #F7F2E7;
+      --sand: #EDE4D1;
+      --text: #EDE4D1;
+      --text-dim: #A8B5AE;
+      --radius: 12px;
+      --max: 1280px;
+
+      --font-heading: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(180deg, #03160F 0%, #082218 45%, #03160F 100%);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Fixed Glass Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(6, 43, 31, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.25);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 24px;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, var(--green-800), var(--green-950));
+      box-shadow: 0 0 10px rgba(201, 162, 39, 0.3);
+    }
+
+    .brand-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-monogram {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+      display: none;
+    }
+
+    .brand-wordmark {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-line1 {
+      font-family: var(--font-heading);
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 3px;
+      line-height: 1;
+    }
+
+    .brand-line2 {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 5px;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--cream);
+      transition: color 0.25s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--gold);
+    }
+
+    /* Mobile Hamburger */
+    .hamburger-btn {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 32px;
+      height: 22px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 110;
+    }
+
+    .hamburger-line {
+      width: 26px;
+      height: 2px;
+      background-color: var(--gold);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .hamburger-btn.active .hamburger-line:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+    .hamburger-btn.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger-btn.active .hamburger-line:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+
+    .header-cta-btn {
+      padding: 10px 22px;
+      border-radius: 6px;
+      background: var(--gold);
+      color: var(--green-950);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.25s ease;
+    }
+
+    .header-cta-btn:hover {
+      background: var(--gold-light);
+      box-shadow: 0 0 18px rgba(201, 162, 39, 0.45);
+    }
+
+    /* Page Hero Banner */
+    .page-hero {
+      padding: 110px 24px 80px;
+      text-align: center;
+      position: relative;
+      background: radial-gradient(circle at 50% 30%, rgba(15, 74, 56, 0.6), transparent 70%), linear-gradient(180deg, #03160F, #062B1F);
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.12;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 160px;
+      margin: 20px auto;
+    }
+
+    .gold-divider .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .gold-divider .divider-sq {
+      width: 6px;
+      height: 6px;
+      background-color: var(--gold);
+      transform: rotate(45deg);
+    }
+
+    .hero-sub {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--sand);
+      line-height: 1.7;
+    }
+
+    /* Section Styles */
+    .section-wrap {
+      padding: 90px 0;
+    }
+
+    .story-split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .story-visual-box {
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius);
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      background: radial-gradient(circle, var(--green-800), var(--green-950));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .story-visual-badge {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 6px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .story-visual-badge span {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 6px;
+      color: var(--gold-light);
+      margin-top: 8px;
+    }
+
+    .story-text-content h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 4vw, 42px);
+      color: var(--cream);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .story-text-content p {
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    /* 4 Steps Craft Grid */
+    .craft-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 26px;
+      margin-top: 50px;
+    }
+
+    .craft-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+      border: 1px solid rgba(201, 162, 39, 0.22);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      transition: all 0.3s ease;
+    }
+
+    .craft-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-6px);
+      background: rgba(201, 162, 39, 0.04);
+    }
+
+    .craft-num {
+      font-family: var(--font-heading);
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .craft-card-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .craft-card-desc {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* Team Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .team-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(201, 162, 39, 0.2);
+      border-radius: var(--radius);
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .team-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--gold);
+      background: radial-gradient(circle, var(--green-700), var(--green-950));
+    }
+
+    .team-name {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    .team-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--green-950);
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .cta-banner h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .cta-banner p {
+      font-size: 16px;
+      font-weight: 500;
+      max-width: 580px;
+      margin: 0 auto 28px;
+    }
+
+    .btn-cta {
+      display: inline-block;
+      padding: 15px 36px;
+      border-radius: 30px;
+      background: var(--green-950);
+      color: var(--gold);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-cta:hover {
+      background: #000;
+      color: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #020F0A;
+      padding: 60px 0 30px;
+      border-top: 1px solid rgba(201, 162, 39, 0.15);
+      font-size: 14px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 3px;
+    }
+
+    .footer-desc {
+      color: var(--text-dim);
+      font-size: 13.5px;
+      margin-top: 10px;
+      max-width: 320px;
+    }
+
+    .footer-col-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: var(--text-dim);
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(201, 162, 39, 0.15);
+      padding-top: 20px;
+      text-align: center;
+      color: rgba(237, 228, 209, 0.4);
+      font-size: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .story-split-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .header-cta-btn {
+        display: none;
+      }
+      .hamburger-btn {
+        display: flex;
+      }
+      .nav-links {
+        position: fixed;
+        top: 74px;
+        left: 0;
+        width: 100%;
+        background: rgba(6, 43, 31, 0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        flex-direction: column;
+        padding: 30px 24px;
+        gap: 20px;
+        border-bottom: 1px solid rgba(201, 162, 39, 0.25);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.35s ease, opacity 0.35s ease;
+        z-index: 99;
+      }
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .nav-link {
+        font-size: 15px;
+        letter-spacing: 2px;
+        padding: 8px 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="index.html" class="brand-block" aria-label="Al Mashi Mandi Home">
+        <div class="brand-mark">
+          <img src="al mashi mandi logo.jpg" alt="Al Mashi Mandi Logo" class="brand-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="brand-monogram">AM</div>
+        </div>
+        <div class="brand-wordmark">
+          <span class="brand-line1">AL MASHI</span>
+          <span class="brand-line2">MANDI</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link active">Our Heritage</a></li>
+          <li><a href="index.html#menu" class="nav-link">Signature Specials</a></li>
+          <li><a href="order.html" class="nav-link">Order Online</a></li>
+          <li><a href="contact.html" class="nav-link">Visit &amp; Table Booking</a></li>
+        </ul>
+      </nav>
+
+      <a href="order.html" class="header-cta-btn">Order Now</a>
+
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Hero Banner -->
+  <section class="page-hero">
+    <span class="hero-eyebrow">OUR TRADITION SINCE 2016</span>
+    <h1 class="hero-title">Rooted in Earth, Perfected by Smoke</h1>
+    <div class="gold-divider" aria-hidden="true">
+      <span class="divider-sq"></span>
+      <span class="divider-line"></span>
+      <span class="divider-sq"></span>
+    </div>
+    <p class="hero-sub">
+      In Ponnani, Kerala, we honor the ancient Arabian craft of slow-cooking meat inside sealed underground clay pits over seasoned hardwood embers.
+    </p>
+  </section>
+
+  <!-- Section 1: The Underground Philosophy -->
+  <section class="section-wrap">
+    <div class="container">
+      <div class="story-split-grid">
+        <div class="story-visual-box">
+          <img src="main mandi.png" alt="Wood-fired Kuzhi Mandi Platter" style="width:80%; height:80%; object-fit:contain; filter:drop-shadow(0 15px 30px rgba(0,0,0,0.7));" onerror="this.style.display='none';" />
+          <div class="story-visual-badge">
+            KUZHI MANDI
+            <span>PONNANI, KERALA</span>
+          </div>
+        </div>
+
+        <div class="story-text-content">
+          <h2>Flavor You Simply Cannot Rush</h2>
+          <p>
+            Al Mashi Mandi was founded with a single, uncompromising standard: never cut corners on time. True Kuzhi Mandi is not merely steamed or baked in an oven — it is born underground.
+          </p>
+          <p>
+            Every morning at dawn, our pit masters ignite seasoned hardwood inside deep clay-lined earth pits. When the wood reduces to glowing, fragrant embers, whole spiced cuts of young baby mutton and farm-fresh chicken are suspended inside. The pit is sealed airtight with clay and heavy iron covers.
+          </p>
+          <p>
+            For four patient hours, the trapped heat and wood-smoke permeate every fiber of meat until it becomes fork-tender, dripping its spiced essence directly into the steaming basmati rice below.
+          </p>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px;">
+            <a href="order.html" class="header-cta-btn" style="display: inline-block;">Order Kuzhi Mandi Online →</a>
+            <a href="contact.html" style="display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 6px; border: 1px solid var(--gold); color: var(--gold); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.25s ease;">Reserve a Dining Table →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: 4 Steps of the Kuzhi Craft -->
+  <section class="section-wrap" style="background: rgba(6, 43, 31, 0.5);">
+    <div class="container">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto 30px;">
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 6px; color: var(--gold); text-transform: uppercase;">THE METHOD</span>
+        <h2 style="font-family: var(--font-heading); font-size: 38px; color: var(--cream); margin-top: 6px;">The 4 Pillars of Al Mashi</h2>
+      </div>
+
+      <div class="craft-steps-grid">
+        <div class="craft-card">
+          <div class="craft-num">01</div>
+          <h3 class="craft-card-title">Natural Hardwood Embers</h3>
+          <p class="craft-card-desc">We never use gas burners or electric heating. Real charcoal and wood embers create the authentic deep aroma of Arabian pit roasting.</p>
+        </div>
+
+        <div class="craft-card">
+          <div class="craft-num">02</div>
+          <h3 class="craft-card-title">18-Spice Secret Hawayej</h3>
+          <p class="craft-card-desc">Freshly ground green cardamom, black lime (loomi), cloves, cinnamon bark, and saffron ground by hand every morning.</p>
+        </div>
+
+        <div class="craft-card">
+          <div class="craft-num">03</div>
+          <h3 class="craft-card-title">Airtight Sealed Pit</h3>
+          <p class="craft-card-desc">The kuzhi pit is sealed completely with clay mud, preserving 100% of moisture and infusing the meat's natural juices into the rice.</p>
+        </div>
+
+        <div class="craft-card">
+          <div class="craft-num">04</div>
+          <h3 class="craft-card-title">Fresh Daily Portions</h3>
+          <p class="craft-card-desc">Zero leftovers. Every grain of rice and cut of meat is prepared fresh for lunch and dinner services until the pit runs out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: The People Behind -->
+  <section class="section-wrap">
+    <div class="container">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto 20px;">
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 6px; color: var(--gold); text-transform: uppercase;">OUR MASTERS</span>
+        <h2 style="font-family: var(--font-heading); font-size: 38px; color: var(--cream); margin-top: 6px;">The Keepers of the Recipe</h2>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">AM</div>
+          <h3 class="team-name">Abdul Majeed</h3>
+          <span class="team-role">Founder & Head Chef</span>
+          <p class="team-desc">Three decades of Mandi mastery — the keeper of our signature kuzhi recipe.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">SR</div>
+          <h3 class="team-name">Sara Rahman</h3>
+          <span class="team-role">Operations Manager</span>
+          <p class="team-desc">Ensures every guest experiences warm hospitality and lightning-fast service.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">MK</div>
+          <h3 class="team-name">Mohammed Kasim</h3>
+          <span class="team-role">Master of the Pit</span>
+          <p class="team-desc">The man who tends the embers and seals the underground kuzhi pits every morning.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">FK</div>
+          <h3 class="team-name">Fatima Khadeeja</h3>
+          <span class="team-role">Spice Curator</span>
+          <p class="team-desc">Curates our authentic Yemeni and Malabari spice blends, ground fresh daily.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Taste the Smoke of Tradition</h2>
+      <p>Order online for fast home delivery across Ponnani or reserve your family dining table today.</p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="order.html" class="btn-cta">Order Now on WhatsApp →</a>
+        <a href="contact.html" class="btn-cta" style="background: transparent; color: var(--gold); border: 2px solid var(--gold);">Book a Table in Advance →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div class="footer-col">
+          <div class="footer-brand-title">AL MASHI</div>
+          <span style="font-size: 10px; font-weight: 600; color: var(--gold-light); letter-spacing: 5px; display: block; margin-top: 2px; margin-bottom: 12px;">MANDI</span>
+          <p class="footer-desc">
+            Authentic Kuzhi Mandi in Ponnani, Kerala. Prepared in underground pits fired with wood embers for unmatched smokiness and tenderness.
+          </p>
+        </div>
+
+        <!-- Col 2: Navigation & Pages -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Explore &amp; Pages</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Heritage &amp; Craft</a></li>
+            <li><a href="order.html">Full Online Menu &amp; Ordering</a></li>
+            <li><a href="contact.html">Visit &amp; Table Booking</a></li>
+            <li><a href="index.html#reviews">Customer Reviews</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Order -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Order Online</h4>
+          <ul class="footer-links">
+            <li><a href="order.html#cat-mandi">Kuzhi Mandi (Quarter, Half, Full)</a></li>
+            <li><a href="order.html#cat-grills">Arabian Grills</a></li>
+            <li><a href="order.html#cat-drinks">Soft Drinks (Pepsi, 7 Up, Coke)</a></li>
+            <li><a href="tel:+910000000000">Call: +91 00000 00000</a></li>
+            <li><a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer">WhatsApp Ordering</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Visit & Reserve -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Visit Us</h4>
+          <ul class="footer-links">
+            <li>Main Road, Ponnani, Malappuram, Kerala</li>
+            <li>Mon – Sun: 11:00 AM – 11:30 PM</li>
+            <li><a href="contact.html" style="color: var(--gold); font-weight: 600;">Reserve a Table Online &rarr;</a></li>
+            <li><a href="https://maps.google.com/?q=Ponnani+Kerala" target="_blank" rel="noopener noreferrer">Google Maps Directions &rarr;</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Al Mashi Mandi. All rights reserved. &middot; Crafted with tradition in Ponnani, Kerala.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* Mobile Hamburger Menu Toggle */
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburgerBtn && navLinks) {
+      hamburgerBtn.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        hamburgerBtn.classList.toggle('active', isOpen);
+        hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          hamburgerBtn.classList.remove('active');
+          hamburgerBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
